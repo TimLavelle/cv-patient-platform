@@ -8,14 +8,14 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
+    preload: ['en', 'kh'],
     lng: 'en',
     backend: {
-      /* translation file path */
       loadPath: '/assets/i18n/{{ns}}/{{lng}}.json'
     },
     fallbackLng: 'en',
+    load: 'languageOnly',
     debug: false,
-    /* can have multiple namespace, in case you want to divide a huge translation into smaller pieces and load them on demand */
     ns: ['translations'],
     defaultNS: 'translations',
     fallbackNS: 'translations',
@@ -26,7 +26,7 @@ i18n
     },
     returnEmptyString: false,
     react: {
-      useSuspense: true,
+      useSuspense: false,
     }
   })
 
