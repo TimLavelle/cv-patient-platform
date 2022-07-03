@@ -25,12 +25,19 @@
   },
   "page": {
     "rego": {
-      "reg.label": "Registration",
+      "page.title": "Registration",
       "welcome.label": "Welcome to the Cambodia Vision Patient Registration and Digital Form Library. Below you’ll find a link to the registration form that needs to filled in. Here you can upload a photo and capture all the necessary information for other subsequent forms.",
       "newPX.label": "To begin the patient registration process, please fill-in the",
       "newPX.link": "New Patient Registration Form",
       "existingPX.header": "Existing patients records",
       "existingPX.detail": "Below is the list of existing patients in the patient database. Please use the Patient Number when looking for their records and forms to fill out. If you need to fill out an additional form for the patient, these forms will be available after you have found your patient record on the search below."
+    }
+  },
+  "forms": {
+    "rego": {
+      "page.title": "Registration Form",
+      "px.label": "Personal Information",
+      "px.details": "Please capture as much information as you can about the patient"
     }
   }
 }

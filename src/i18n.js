@@ -26,7 +26,7 @@ i18n
     },
     returnEmptyString: false,
     react: {
-      useSuspense: true,
+      useSuspense: false,
     }
   })
 
