@@ -1,0 +1,36 @@
+{
+  "global": {
+    "cv.label": "Cambodia Vision",
+    "mission.label": "Mission",
+    "px.label": "Patient Platform",
+    "copy.label": "Copyright",
+    "language.label": "Language",
+    "en.label": "English",
+    "kh.label": "Khmer"
+  },
+  "header": {
+    "search.label": "Search"
+  },
+  "nav": {
+    "dashboard.label": "Dashboard",
+    "stats.label": "Mission Statistics",
+    "team.label": "Team Contacts",
+    "open.label": "Open menu",
+    "user.label": "Open user menu",
+    "auth": {
+      "profile.label": "Your Profile",
+      "settings.label": "Settings",
+      "logout.label": "Sign out"
+    }
+  },
+  "page": {
+    "rego": {
+      "reg.label": "Registration",
+      "welcome.label": "Welcome to the Cambodia Vision Patient Registration and Digital Form Library. Below you’ll find a link to the registration form that needs to filled in. Here you can upload a photo and capture all the necessary information for other subsequent forms.",
+      "newPX.label": "To begin the patient registration process, please fill-in the",
+      "newPX.link": "New Patient Registration Form",
+      "existingPX.header": "Existing patients records",
+      "existingPX.detail": "Below is the list of existing patients in the patient database. Please use the Patient Number when looking for their records and forms to fill out. If you need to fill out an additional form for the patient, these forms will be available after you have found your patient record on the search below."
+    }
+  }
+}
