@@ -35,9 +35,9 @@
   },
   "forms": {
     "rego": {
-      "page.title": "Registration Form",
-      "px.label": "Personal Information",
-      "px.details": "Please capture as much information as you can about the patient"
+      "page.title": "ទម្រង់ចុះឈ្មោះ",
+      "px.label": "ព័ត៌មាន​ផ្ទាល់ខ្លួន",
+      "px.details": "សូមចាប់យកព័ត៌មានឱ្យបានច្រើនតាមដែលអ្នកអាចធ្វើបានអំពីអ្នកជំងឺ"
     }
   }
 }
