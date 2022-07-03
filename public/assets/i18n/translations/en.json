@@ -37,7 +37,27 @@
     "rego": {
       "page.title": "Registration Form",
       "px.label": "Personal Information",
-      "px.details": "Please capture as much information as you can about the patient"
+      "px.details": "Please capture as much information as you can about the patient",
+      "fields": {
+        "px.number": "Patient Number",
+        "px.numberHint": "Please enter a value between 0 and 10,000.",
+        "px.gender": "Gender",
+        "px.givenName": "Given Name",
+        "px.familyName": "Family Name",
+        "px.age": "Age",
+        "px.province": "Province",
+        "px.district": "Districts",
+        "px.village": "Village",
+        "px.commune": "Commune",
+        "px.reason": "Why are you here today?"
+      },
+      "errors": {
+        "px.number": "This patient number is already used"
+      }
+    },
+    "errors": {
+      "errors.label": "There was a problem with your submission. Errors have been highlighted below.",
+      "required.label": "This field is required."
     }
   }
 }

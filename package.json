@@ -25,6 +25,7 @@
     "i18next-http-backend": "^1.4.1",
     "i18next-xhr-backend": "^3.2.2",
     "markdocs": "^3.1.0",
+    "mongodb": "^4.7.0",
     "next": "12.1.6",
     "postcss-focus-visible": "^6.0.4",
     "postcss-import": "^14.1.0",
