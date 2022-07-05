@@ -38,6 +38,8 @@
       "page.title": "Registration Form",
       "px.label": "Personal Information",
       "px.details": "Please capture as much information as you can about the patient",
+      "px.addressLabel": "Address Information",
+      "px.addressDetails": "It's important we capture where the patient is from as it allows the Cambodia Vision staff give critical analytics to the teams to use for next years mission and location",
       "fields": {
         "px.number": "Patient Number",
         "px.numberPlaceHolder": "0001",
@@ -56,7 +58,8 @@
         "px.district": "Districts",
         "px.village": "Village",
         "px.commune": "Commune",
-        "px.reason": "Why are you here today?"
+        "px.reason": "Why are you here today?",
+        "px.mobile": "Contact Phone Number/s (If any)"
       },
       "errors": {
         "px.number": "This patient number is already used"

@@ -6,11 +6,6 @@ import { useTranslation } from 'react-i18next'
 export function PXNumber() {
   const { t, i18n } = useTranslation();
 
-  const [input, setInput] = useState('')
-  const validate = async (e) => {
-    console.log(input)
-  }
-
   return (
     <div>
       <label htmlFor="pxnumber" className="block text-sm font-medium text-gray-700">
