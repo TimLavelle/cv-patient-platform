@@ -2,8 +2,6 @@ import { Fragment, useState, React } from 'react'
 import { Formik, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useTranslation } from 'react-i18next'
-import { PXNumber } from '@/components/micro/InputPXNumber'
-import { validationError } from '@/components/functional/validationError'
 import { ExclamationCircleIcon, CheckIcon, SelectorIcon, SortAscendingIcon, UsersIcon } from '@heroicons/react/solid'
 import { Listbox, Transition } from '@headlessui/react'
 
@@ -45,6 +43,15 @@ export function RegForm() {
     mobile: Yup.number()
       .positive('forms.rego.fields.px.mobile.Error')
   })
+
+  const getProvinces = async() => {
+    const response = await fetch('http://localhost:3000/api/provinces');
+    const provinces = await response.json();
+    console.log(provinces);
+  }
+
+  let provOptions = []
+
 
   return (
     <>
@@ -333,7 +340,7 @@ export function RegForm() {
                       <div className='grid grid-cols-6 gap-6'>
                         <div className="col-span-6 sm:col-span-6 lg:col-span-2">
                           <label htmlFor="city" className="block text-sm font-medium text-gray-700">
-                            City
+                            {t('forms.rego.fields.px.province')}
                           </label>
                           <input
                             type="text"
@@ -346,7 +353,7 @@ export function RegForm() {
 
                         <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                           <label htmlFor="region" className="block text-sm font-medium text-gray-700">
-                            State / Province
+                            {t('forms.rego.fields.px.district')}
                           </label>
                           <input
                             type="text"
@@ -359,7 +366,7 @@ export function RegForm() {
 
                         <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                           <label htmlFor="postal-code" className="block text-sm font-medium text-gray-700">
-                            ZIP / Postal code
+                            {t('forms.rego.fields.px.village')}
                           </label>
                           <input
                             type="text"

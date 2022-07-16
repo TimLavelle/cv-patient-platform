@@ -51,8 +51,10 @@
         "px.genderError": "The patients gender must be selected",
         "px.givenName": "Given Name",
         "px.givenNameError": "Please provide a given name",
+        "px.givenNameErrorLength": "Given name should be longer then 5 characters long",
         "px.familyName": "Family Name",
         "px.familyNameError": "Please provide a family name",
+        "px.familyNameErrorLength": "Family name should be longer then 5 characters long",
         "px.age": "Age",
         "px.ageError": "Patients age must be captured",
         "px.province": "Province",
@@ -61,7 +63,10 @@
         "px.commune": "Commune",
         "px.reason": "Why are you here today?",
         "px.mobile": "Contact Phone Number/s (If any)",
-        "px.mobile.Error": "Mobile must be numbers only"
+        "px.mobile.Error": "Mobile must be numbers only",
+        "px.eyesChecked": "Does the patient want to have their eyes checked?",
+        "px.gpOnly": "Is the patient here only to see the GP Doctors?",
+        "px.hearing": "Does the patient want/need their hearing checked?"
       },
       "errors": {
         "px.number": "This patient number is already used"
