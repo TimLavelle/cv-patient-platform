@@ -1,11 +1,16 @@
 const { connectToDatabase } = require('@/lib/mongodb');
+import { useRouter } from 'next/router'
 
-async function getProvinces(req, res) {
+console.log('Prov')
+
+async function getProv(req, res) {
+  const router = useRouter();
+  const { results } = router.query;
   try {
     let { db } = await connectToDatabase();
     let prov = await db
       .collection('provinces')
-      .find({})
+      .find({ "prov_id": 2 })
       .sort({ published: -1 })
       .toArray();
     return res.json({
@@ -20,10 +25,10 @@ async function getProvinces(req, res) {
   }
 }
 
-export default async function handler(req, res) {
+export async function handler(req, res) {
   switch (req.method) {
     case 'GET': {
-      return getProvinces(req, res);
+      return getProv(req, res);
     }
 
     case 'POST': {
