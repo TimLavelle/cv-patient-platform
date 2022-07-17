@@ -28,7 +28,8 @@ module.exports = {
         '8xl': '88rem',
       },
       colors: {
-        'primary': '#0088c6'
+        'primary': '#0088c6',
+        'secondary': '#e91c31'
       }
     },
   },

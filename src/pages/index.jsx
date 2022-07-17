@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Suspense } from 'react'
+import React, { Component } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
@@ -9,7 +9,7 @@ import { Container } from '@/components/Container'
 import { MissionYear } from '@/components/micro/missionYear'
 
 export default function Home() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const pageTitle = t('global.cv.label') +' - ' + t('global.px.label');
 	return (
 	  <>
