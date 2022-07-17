@@ -1,4 +1,4 @@
-# Cambodia Mission - Patient Platform
+# Cambodia Vision - Patient Platform
 Small application built to run on Raspberry Pi's so when the mission team travels to remote areas of Cambodia, we don't need to rely on a live internet connection for the application to work. 
 
 ## For development
