@@ -2,6 +2,9 @@
   // Controls if the editor should automatically format the line after typing
   "beautify.onSave": true,
   "editor.formatOnSave": true,
+  // The number of spaces a tab is equal to.
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
   
   // You can auto format any files based on the file extensions type.
   "beautify.JSfiles": [

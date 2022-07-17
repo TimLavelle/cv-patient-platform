@@ -9,7 +9,7 @@ export function Footer() {
   const { t, i18n } = useTranslation();
   return (
     <footer className="bg-gray-800 mt-20">
-      <Container>
+      <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
         <div className="py-16">
           <Logo className="mx-auto h-10 w-auto" />
           <nav className="mt-10 text-sm" aria-label="quick links">
@@ -25,7 +25,7 @@ export function Footer() {
           {t('global.copy.label')} &copy; {new Date().getFullYear()} {t('global.cv.label')}
           </p>
         </div>
-      </Container>
+      </div>
     </footer>
   )
 }

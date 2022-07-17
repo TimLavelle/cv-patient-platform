@@ -4,9 +4,9 @@
     "mission.label": "Mission",
     "px.label": "Patient Platform",
     "copy.label": "Copyright",
-    "language.label": "Language",
-    "en.label": "English",
-    "kh.label": "Khmer"
+    "language.label": "Language (ភាសា)",
+    "en.label": "English (ភាសាអង់គ្លេស)",
+    "kh.label": "Khmer (ខ្មែរ)"
   },
   "header": {
     "search.label": "Search"
@@ -25,12 +25,56 @@
   },
   "page": {
     "rego": {
-      "reg.label": "Registration",
+      "page.title": "Registration",
       "welcome.label": "Welcome to the Cambodia Vision Patient Registration and Digital Form Library. Below you’ll find a link to the registration form that needs to filled in. Here you can upload a photo and capture all the necessary information for other subsequent forms.",
       "newPX.label": "To begin the patient registration process, please fill-in the",
       "newPX.link": "New Patient Registration Form",
       "existingPX.header": "Existing patients records",
       "existingPX.detail": "Below is the list of existing patients in the patient database. Please use the Patient Number when looking for their records and forms to fill out. If you need to fill out an additional form for the patient, these forms will be available after you have found your patient record on the search below."
+    }
+  },
+  "forms": {
+    "rego": {
+      "page.title": "Registration Form",
+      "px.label": "Personal Information",
+      "px.details": "Please capture as much information as you can about the patient",
+      "px.addressLabel": "Address Information",
+      "px.addressDetails": "It's important we capture where the patient is from as it allows the Cambodia Vision staff give critical analytics to the teams to use for next years mission and location",
+      "fields": {
+        "px.number": "Patient Number",
+        "px.numberPlaceHolder": "0001",
+        "px.numberHint": "Please enter a # between 0 and 10,000.",
+        "px.numberLength": "Patient Number needs to be 4 digits",
+        "px.numberError": "You must capture the patient number",
+        "px.numberErrorInUse": "This Patient number is already in use",
+        "px.gender": "Gender",
+        "px.genderError": "The patients gender must be selected",
+        "px.givenName": "Given Name",
+        "px.givenNameError": "Please provide a given name",
+        "px.givenNameErrorLength": "Given name should be longer then 5 characters long",
+        "px.familyName": "Family Name",
+        "px.familyNameError": "Please provide a family name",
+        "px.familyNameErrorLength": "Family name should be longer then 5 characters long",
+        "px.age": "Age",
+        "px.ageError": "Patients age must be captured",
+        "px.province": "Province",
+        "px.district": "Districts",
+        "px.village": "Village",
+        "px.commune": "Commune",
+        "px.reason": "Why are you here today?",
+        "px.mobile": "Contact Phone Number/s (If any)",
+        "px.mobile.Error": "Mobile must be numbers only",
+        "px.eyesChecked": "Does the patient want to have their eyes checked?",
+        "px.gpOnly": "Is the patient here only to see the GP Doctors?",
+        "px.hearing": "Does the patient want/need their hearing checked?"
+      },
+      "errors": {
+        "px.number": "This patient number is already used"
+      }
+    },
+    "errors": {
+      "errors.label": "There was a problem with your submission. Errors have been highlighted below.",
+      "required.label": "This field is required."
     }
   }
 }

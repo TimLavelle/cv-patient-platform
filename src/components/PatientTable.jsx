@@ -7,8 +7,8 @@ const patient = [
 
 export function PatientTable() {
   return (
-    <Container>
-      <div className="sm:flex sm:items-center">
+    <div>
+      <div className="mt-8 sm:flex sm:items-center">
         <div className="mt-4 sm:mt-0 sm:flex-none">
           <button
             type="button"
@@ -60,7 +60,6 @@ export function PatientTable() {
           </div>
         </div>
       </div>
-
-    </Container>
+    </div>
   )
 }

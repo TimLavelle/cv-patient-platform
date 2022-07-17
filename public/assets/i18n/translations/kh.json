@@ -2,35 +2,42 @@
   "global": {
     "cv.label": "ទស្សនៈវិស័យកម្ពុជា។",
     "mission.label": "បេសកកម្ម",
-    "px.label": "Patient Platform",
-    "copy.label": "Copyright",
-    "language.label": "Language",
-    "en.label": "English",
-    "kh.label": "Khmer"
+    "px.label": "វេទិកាអ្នកជំងឺ",
+    "copy.label": "រក្សាសិទ្ធិ",
+    "language.label": "ភាសា (Language)",
+    "en.label": "ភាសាអង់គ្លេស (English)",
+    "kh.label": "ខ្មែរ (Khmer)"
   },
   "header": {
-    "search.label": "Search"
+    "search.label": "ស្វែងរក"
   },
   "nav": {
-    "dashboard.label": "Dashboard",
-    "stats.label": "Mission Statistics",
-    "team.label": "Team Contacts",
-    "open.label": "Open menu",
-    "user.label": "Open user menu",
+    "dashboard.label": "ផ្ទាំងគ្រប់គ្រង",
+    "stats.label": "ស្ថិតិបេសកកម្ម",
+    "team.label": "ទំនាក់ទំនងក្រុម",
+    "open.label": "បើកម៉ឺនុយ",
+    "user.label": "បើកម៉ឺនុយអ្នកប្រើប្រាស់",
     "auth": {
-      "profile.label": "Your Profile",
-      "settings.label": "Settings",
-      "logout.label": "Sign out"
+      "profile.label": "ប្រវត្តិរូបរបស់អ្នក។",
+      "settings.label": "ការកំណត់",
+      "logout.label": "ការកំណត់ការកំណត់"
     }
   },
   "page": {
     "rego": {
-      "reg.label": "Registration",
-      "welcome.label": "Welcome to the Cambodia Vision Patient Registration and Digital Form Library. Below you’ll find a link to the registration form that needs to filled in. Here you can upload a photo and capture all the necessary information for other subsequent forms.",
-      "newPX.label": "To begin the patient registration process, please fill-in the",
-      "newPX.link": "New Patient Registration Form",
-      "existingPX.header": "Existing patients records",
-      "existingPX.detail": "Below is the list of existing patients in the patient database. Please use the Patient Number when looking for their records and forms to fill out. If you need to fill out an additional form for the patient, these forms will be available after you have found your patient record on the search below."
+      "page.title": "ការចុះឈ្មោះ",
+      "welcome.label": "សូមស្វាគមន៍មកកាន់ការចុះឈ្មោះអ្នកជំងឺនៅកម្ពុជា និងបណ្ណាល័យទម្រង់ឌីជីថល។ ខាងក្រោមអ្នកនឹងឃើញតំណទៅកាន់ទម្រង់ចុះឈ្មោះដែលត្រូវការបំពេញ។ នៅទីនេះអ្នកអាចបង្ហោះរូបថត និងចាប់យកព័ត៌មានចាំបាច់ទាំងអស់សម្រាប់ទម្រង់បន្តបន្ទាប់ផ្សេងទៀត។",
+      "newPX.label": "ដើម្បីចាប់ផ្តើមដំណើរការចុះឈ្មោះអ្នកជំងឺ សូមបំពេញក្នុង",
+      "newPX.link": "ទម្រង់ចុះឈ្មោះអ្នកជំងឺថ្មី។",
+      "existingPX.header": "កំណត់ត្រាអ្នកជំងឺដែលមានស្រាប់",
+      "existingPX.detail": "ខាងក្រោមនេះគឺជាបញ្ជីអ្នកជំងឺដែលមានស្រាប់នៅក្នុងមូលដ្ឋានទិន្នន័យអ្នកជំងឺ។ សូមប្រើលេខអ្នកជំងឺ នៅពេលស្វែងរកកំណត់ត្រា និងទម្រង់របស់ពួកគេដើម្បីបំពេញ។ ប្រសិនបើអ្នកត្រូវការបំពេញទម្រង់បន្ថែមសម្រាប់អ្នកជំងឺ ទម្រង់ទាំងនេះនឹងមានបន្ទាប់ពីអ្នកបានរកឃើញកំណត់ត្រាអ្នកជំងឺរបស់អ្នកនៅលើការស្វែងរកខាងក្រោម។"
+    }
+  },
+  "forms": {
+    "rego": {
+      "page.title": "ទម្រង់ចុះឈ្មោះ",
+      "px.label": "ព័ត៌មាន​ផ្ទាល់ខ្លួន",
+      "px.details": "សូមចាប់យកព័ត៌មានឱ្យបានច្រើនតាមដែលអ្នកអាចធ្វើបានអំពីអ្នកជំងឺ"
     }
   }
 }
