@@ -13,7 +13,6 @@ export default function Home() {
   const pageTitle = t('global.cv.label') +' - ' + t('global.px.label');
 	return (
 	  <>
-    <Suspense fallback={null}>
       <Head>
         <title>{pageTitle}</title>
       </Head>
@@ -46,7 +45,6 @@ export default function Home() {
         </Container>
       </main>
       <Footer />
-    </Suspense>
 	  </>
 	)
 }

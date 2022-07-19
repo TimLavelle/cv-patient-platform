@@ -6,7 +6,7 @@ async function getProvinces(req, res) {
     let prov = await db
       .collection('provinces')
       .find({})
-      .sort({ published: -1 })
+      .sort({ prov_id: 1 })
       .toArray();
     return res.json({
       message: JSON.parse(JSON.stringify(prov)),

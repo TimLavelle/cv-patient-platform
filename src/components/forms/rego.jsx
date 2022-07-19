@@ -4,6 +4,8 @@ import * as Yup from 'yup';
 import { useTranslation } from 'react-i18next'
 import { ExclamationCircleIcon, CheckIcon, SelectorIcon, UsersIcon, BadgeCheckIcon } from '@heroicons/react/solid'
 import { Listbox, Transition } from '@headlessui/react'
+import { Provinces } from '../../components/micro/selectProvinces'
+import { CVLabel } from '../../components/micro/label'
 
 const genders = [
   { id: "", name: 'Please choose a gender' },
@@ -42,14 +44,6 @@ export function RegForm() {
     mobile: Yup.number()
       .positive('forms.rego.fields.px.mobile.Error')
   })
-
-  const getProvinces = async () => {
-    const response = await fetch('http://localhost:3000/api/provinces');
-    const provinces = await response.json();
-    console.log(provinces);
-  }
-
-  let provOptions = []
 
   return (
     <>
@@ -101,10 +95,7 @@ export function RegForm() {
                     <div className="px-4 py-5 bg-white sm:p-6">
                       <div className="grid grid-cols-6 gap-6">
                         <div className="col-span-6 sm:col-span-3">
-                          <label htmlFor="pxnumber" className="block text-sm font-medium text-gray-700">
-                            {t('forms.rego.fields.px.number')}
-                            <BadgeCheckIcon className="h-5 w-5 text-blue-500 pl-1 inline" aria-hidden="true" />
-                          </label>
+                          <CVLabel field='forms.rego.fields.px.number' />
                           <div className="mt-1 flex rounded-md shadow-sm">
                             <div className="relative flex items-stretch flex-grow focus-within:z-10">
                               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><UsersIcon className="h-5 w-5 text-gray-400" aria-hidden="true" /></div>
@@ -212,9 +203,7 @@ export function RegForm() {
                         </div>
 
                         <div className="col-span-6 sm:col-span-6 lg:col-span-2">
-                          <label htmlFor="familyName" className="block text-sm font-medium text-gray-700">
-                            {t('forms.rego.fields.px.familyName')} <BadgeCheckIcon className="h-5 w-5 text-blue-500 pl-1 inline" aria-hidden="true" />
-                          </label>
+                          <CVLabel field='forms.rego.fields.px.familyName' />
                           <div className="mt-1 flex rounded-md shadow-sm">
                             <div className="relative flex items-stretch flex-grow focus-within:z-10">
                               <Field
@@ -238,9 +227,7 @@ export function RegForm() {
                         </div>
 
                         <div className="col-span-6 sm:col-span-6 lg:col-span-2">
-                          <label htmlFor="givenName" className="block text-sm font-medium text-gray-700">
-                            {t('forms.rego.fields.px.givenName')} <BadgeCheckIcon className="h-5 w-5 text-blue-500 pl-1 inline" aria-hidden="true" />
-                          </label>
+                          <CVLabel field='forms.rego.fields.px.givenName' />
                           <div className="mt-1 flex rounded-md shadow-sm">
                             <div className="relative flex items-stretch flex-grow focus-within:z-10">
                               <Field
@@ -264,9 +251,7 @@ export function RegForm() {
                         </div>
 
                         <div className="col-span-6 sm:col-span-6 lg:col-span-2">
-                          <label htmlFor="pxage" className="block text-sm font-medium text-gray-700">
-                            {t('forms.rego.fields.px.age')} <BadgeCheckIcon className="h-5 w-5 text-blue-500 pl-1 inline" aria-hidden="true" />
-                          </label>
+                          <CVLabel field='forms.rego.fields.px.age' />
                           <div className="mt-1 flex rounded-md shadow-sm">
                             <div className="relative flex items-stretch flex-grow focus-within:z-10">
                               <Field
@@ -290,9 +275,7 @@ export function RegForm() {
                         </div>
 
                         <div className="col-span-6">
-                          <label htmlFor="mobile" className="block text-sm font-medium text-gray-700">
-                            {t('forms.rego.fields.px.mobile')}
-                          </label>
+                          <CVLabel field='forms.rego.fields.px.mobile' />
                           <div className="mt-1 flex rounded-md shadow-sm">
                             <div className="relative flex items-stretch flex-grow focus-within:z-10">
                               <Field
@@ -336,21 +319,12 @@ export function RegForm() {
                     <div className='px-4 py-5 bg-white sm:p-6'>
                       <div className='grid grid-cols-6 gap-6'>
                         <div className="col-span-6 sm:col-span-6 lg:col-span-2">
-                          <label htmlFor="province" className="block text-sm font-medium text-gray-700">
-                            {t('forms.rego.fields.px.province')} <BadgeCheckIcon className="h-5 w-5 text-blue-500 pl-1 inline" aria-hidden="true" />
-                          </label>
-                          <Field
-                            type="text"
-                            name="province"
-                            id="province"
-                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                          />
+                          <CVLabel field="forms.rego.fields.px.province" />
+                          <Provinces />
                         </div>
 
                         <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                          <label htmlFor="district" className="block text-sm font-medium text-gray-700">
-                            {t('forms.rego.fields.px.district')} <BadgeCheckIcon className="h-5 w-5 text-blue-500 pl-1 inline" aria-hidden="true" />
-                          </label>
+                          <CVLabel field="forms.rego.fields.px.district" />
                           <Field
                             type="text"
                             name="district"
@@ -360,9 +334,7 @@ export function RegForm() {
                         </div>
 
                         <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                          <label htmlFor="village" className="block text-sm font-medium text-gray-700">
-                            {t('forms.rego.fields.px.village')} <BadgeCheckIcon className="h-5 w-5 text-blue-500 pl-1 inline" aria-hidden="true" />
-                          </label>
+                          <CVLabel field='forms.rego.fields.px.village' />
                           <Field
                             type="text"
                             name="village"

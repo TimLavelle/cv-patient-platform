@@ -1,13 +1,21 @@
 const { connectToDatabase } = require('@/lib/mongodb');
+var q2m = require('query-to-mongo')
 
 async function getProv(req, res) {
   try {
+
     let { db } = await connectToDatabase();
-    const id = parseInt(req.query.prov_id)
+    const table = 'provinces';
+    let query = q2m(req.query);    
+    
+    console.log(query.options);
 
     let prov = await db
-      .collection('provinces')
-      .find({ "prov_id": id })
+      .collection(table)
+      .find(
+        query.criteria,
+        query.options
+      )
       .sort({ published: -1 })
       .toArray();
     return res.json({
