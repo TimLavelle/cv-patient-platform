@@ -1,14 +1,27 @@
 const { connectToDatabase } = require('@/lib/mongodb');
+var q2m = require('query-to-mongo')
 
-async function getProvinces(req, res) {
+async function getDist(req, res) {
   try {
+
     let { db } = await connectToDatabase();
+    const table = 'districts';
+    let query = q2m(req.query);    
+    
+    // console.log(query.options);
+
     let prov = await db
-      .collection('provinces')
-      .find({})
-      .sort({ prov_id: 1 })
+      .collection(table)
+      .find(
+        query.criteria,
+        query.options
+      )
+      .sort({ published: -1 })
       .toArray();
-    return res.json(prov);
+    return res.json({
+      message: JSON.parse(JSON.stringify(prov)),
+      success: true,
+    });
   } catch (error) {
     return res.json({
       message: new Error(error).message,
@@ -20,7 +33,7 @@ async function getProvinces(req, res) {
 export default async function handler(req, res) {
   switch (req.method) {
     case 'GET': {
-      return getProvinces(req, res);
+      return getDist(req, res);
     }
 
     case 'POST': {

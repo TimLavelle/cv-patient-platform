@@ -1,11 +1,13 @@
 import { Fragment, useState, React } from 'react'
-import { Formik, Form, Field, ErrorMessage, formik } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useTranslation } from 'react-i18next'
 import { ExclamationCircleIcon, CheckIcon, SelectorIcon, UsersIcon, BadgeCheckIcon } from '@heroicons/react/solid'
 import { Listbox, Transition } from '@headlessui/react'
-import { Provinces } from '../../components/micro/selectProvinces'
-import { CVLabel } from '../../components/micro/label'
+import { CVLabel } from '@/components/micro/label'
+import { GetProvincesAPI } from '@/components/services/GetProvincesAPI'
+import { GetDistrictsAPI } from '@/components/services/GetDistrictsAPI'
+import { CustomListBox } from '@/components/micro/ListBox'
 
 const genders = [
   { id: "", name: 'Please choose a gender' },
@@ -21,7 +23,10 @@ function classNames(...classes) {
 
 export function RegForm() {
   const { t, i18n } = useTranslation();
-  const [selected, setSelected] = useState(genders[0])
+  
+  const [ provinces ] = GetProvincesAPI();
+  const [ districts ] = GetDistrictsAPI(3);
+  const [ selected, setSelected ] = useState(genders[0]);
 
   const registrationSchema = Yup.object().shape({
     pxnumber: Yup.string()
@@ -42,7 +47,11 @@ export function RegForm() {
       .required(t('forms.rego.fields.px.ageError')),
 
     mobile: Yup.number()
-      .positive('forms.rego.fields.px.mobile.Error')
+      .positive(t('forms.rego.fields.px.mobileError')),
+  
+    pxProvince: Yup.number()
+      .notOneOf(['0'], t('forms.rego.fields.px.provinceError'))
+      .required(t('forms.rego.fields.px.provinceError'))
   })
 
   return (
@@ -60,7 +69,7 @@ export function RegForm() {
           givenName: '',
           pxage: '',
           mobile: '',
-          province: '',
+          pxProvince: '',
           district: '',
           village: ''
         }}
@@ -95,7 +104,7 @@ export function RegForm() {
                     <div className="px-4 py-5 bg-white sm:p-6">
                       <div className="grid grid-cols-6 gap-6">
                         <div className="col-span-6 sm:col-span-3">
-                          <CVLabel field='forms.rego.fields.px.number' />
+                          <CVLabel field='forms.rego.fields.px.number' required='1' />
                           <div className="mt-1 flex rounded-md shadow-sm">
                             <div className="relative flex items-stretch flex-grow focus-within:z-10">
                               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><UsersIcon className="h-5 w-5 text-gray-400" aria-hidden="true" /></div>
@@ -126,64 +135,16 @@ export function RegForm() {
                         </div>
 
                         <div className="col-span-6 sm:col-span-3">
-                          <Listbox name='genderSelect' value={selected.id} onChange={setSelected}>
-                            {({ open }) => (
-                              <>
-                                <Listbox.Label className="block text-sm font-medium text-gray-700">{t('forms.rego.fields.px.gender')} <BadgeCheckIcon className="h-5 w-5 text-blue-500 pl-1 inline" aria-hidden="true" /></Listbox.Label>
-                                <div className="mt-1 relative">
-                                  <Listbox.Button className="bg-white relative w-full border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                    <span className="block truncate">{selected.name}</span>
-                                    <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                                      <SelectorIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
-                                    </span>
-                                  </Listbox.Button>
-
-                                  <Transition
-                                    show={open}
-                                    as={Fragment}
-                                    leave="transition ease-in duration-100"
-                                    leaveFrom="opacity-100"
-                                    leaveTo="opacity-0"
-                                  >
-                                    <Listbox.Options className="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
-                                      {genders.map((gen) => (
-                                        <Listbox.Option
-                                          key={gen.id}
-                                          className={({ active }) =>
-                                            classNames(
-                                              active ? 'text-white bg-indigo-600' : 'text-gray-900',
-                                              'cursor-default select-none relative py-2 pl-3 pr-9'
-                                            )
-                                          }
-                                          value={gen}
-                                        >
-                                          {({ selected, active }) => (
-                                            <>
-                                              <span className={classNames(selected ? 'font-semibold' : 'font-normal', 'block truncate')}>
-                                                {gen.name}
-                                              </span>
-
-                                              {selected ? (
-                                                <span
-                                                  className={classNames(
-                                                    active ? 'text-white' : 'text-indigo-600',
-                                                    'absolute inset-y-0 right-0 flex items-center pr-4'
-                                                  )}
-                                                >
-                                                  <CheckIcon className="h-5 w-5" aria-hidden="true" />
-                                                </span>
-                                              ) : null}
-                                            </>
-                                          )}
-                                        </Listbox.Option>
-                                      ))}
-                                    </Listbox.Options>
-                                  </Transition>
-                                </div>
-                              </>
-                            )}
-                          </Listbox>
-                          <Field type="hidden" name="pxgender" id="pxgender" value={selected.name} onChange={setSelected} />
+                          <CustomListBox
+                            listName="genderSelect"
+                            listState={selected}
+                            changedState={setSelected}
+                            listLabel={t('forms.rego.fields.px.gender')}
+                            listObject={genders}
+                            formikID="pxgender"
+                            optionID="id"
+                            optionValue="name"
+                          />
 
                           {errors.pxgender &&
                             <ErrorMessage
@@ -203,7 +164,7 @@ export function RegForm() {
                         </div>
 
                         <div className="col-span-6 sm:col-span-6 lg:col-span-2">
-                          <CVLabel field='forms.rego.fields.px.familyName' />
+                          <CVLabel field='forms.rego.fields.px.familyName' required='1' />
                           <div className="mt-1 flex rounded-md shadow-sm">
                             <div className="relative flex items-stretch flex-grow focus-within:z-10">
                               <Field
@@ -227,7 +188,7 @@ export function RegForm() {
                         </div>
 
                         <div className="col-span-6 sm:col-span-6 lg:col-span-2">
-                          <CVLabel field='forms.rego.fields.px.givenName' />
+                          <CVLabel field='forms.rego.fields.px.givenName' required='1' />
                           <div className="mt-1 flex rounded-md shadow-sm">
                             <div className="relative flex items-stretch flex-grow focus-within:z-10">
                               <Field
@@ -251,7 +212,7 @@ export function RegForm() {
                         </div>
 
                         <div className="col-span-6 sm:col-span-6 lg:col-span-2">
-                          <CVLabel field='forms.rego.fields.px.age' />
+                          <CVLabel field='forms.rego.fields.px.age' required='1' />
                           <div className="mt-1 flex rounded-md shadow-sm">
                             <div className="relative flex items-stretch flex-grow focus-within:z-10">
                               <Field
@@ -319,18 +280,30 @@ export function RegForm() {
                     <div className='px-4 py-5 bg-white sm:p-6'>
                       <div className='grid grid-cols-6 gap-6'>
                         <div className="col-span-6 sm:col-span-6 lg:col-span-2">
-                          <CVLabel field="forms.rego.fields.px.province" />
-                          <Provinces />
+                          <CVLabel field="forms.rego.fields.px.province" required='1' />
+                          <Field
+                            as="select"
+                            id="pxProvince"
+                            name="pxProvince"
+                            className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                          >
+                            {!provinces ? provinces : provinces.map((p) => (
+                              <option key={p.prov_id} value={p.prov_id}>{p.prov_name}</option>
+                            ))}
+                          </Field>
                         </div>
 
                         <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                          <CVLabel field="forms.rego.fields.px.district" />
+                          <CVLabel field="forms.rego.fields.px.district" required='1' />
                           <Field
-                            type="text"
-                            name="district"
-                            id="district"
-                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                          />
+                            as="select"
+                            id="pxDistrict"
+                            name="pxDistrict"
+                            className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                            {!districts ? districts : districts.map((p) => (
+                              <option key={p.dist_id} value={p.dist_id}>{p.name}</option>
+                            ))}
+                          </Field>
                         </div>
 
                         <div className="col-span-6 sm:col-span-3 lg:col-span-2">

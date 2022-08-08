@@ -1,11 +1,11 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   experimental: {
-    newNextLinkBehavior: true,
+    newNextLinkBehavior: true
   },
-  trailingSlash: true
+  trailingSlash: false
 }
 
 module.exports = nextConfig;

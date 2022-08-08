@@ -6,7 +6,7 @@ import { Footer } from '@/components/Footer'
 import { Container } from '@/components/Container'
 import { RegForm } from '@/components/forms/rego'
 
-export default function Home() {
+export default function Registration() {
 	const { t, i18n } = useTranslation();
 	const pageTitle = t('global.cv.label') + ' - ' + t('global.px.label');
 
