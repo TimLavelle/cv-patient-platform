@@ -1,9 +1,8 @@
-import { Fragment, useState, React } from 'react'
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { useState } from 'react'
+import {Formik, Form, Field, ErrorMessage, useFormikContext} from 'formik';
 import * as Yup from 'yup';
 import { useTranslation } from 'react-i18next'
-import { ExclamationCircleIcon, CheckIcon, SelectorIcon, UsersIcon, BadgeCheckIcon } from '@heroicons/react/solid'
-import { Listbox, Transition } from '@headlessui/react'
+import { ExclamationCircleIcon, UsersIcon } from '@heroicons/react/solid'
 import { CVLabel } from '@/components/micro/label'
 import { GetProvincesAPI } from '@/components/services/GetProvincesAPI'
 import { GetDistrictsAPI } from '@/components/services/GetDistrictsAPI'
@@ -16,17 +15,20 @@ const genders = [
   { id: 3, name: 'Male' },
   { id: 4, name: 'Prefer not to answer' },
 ]
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
+let [ districts ] = '';
 
 export function RegForm() {
   const { t, i18n } = useTranslation();
   
   const [ provinces ] = GetProvincesAPI();
-  const [ districts ] = GetDistrictsAPI(3);
   const [ selected, setSelected ] = useState(genders[0]);
+  
+  function useProvinces(pr){
+    
+    let chosenProvince = pr;
+    [ districts ] = GetDistrictsAPI(chosenProvince);
+    console.log(chosenProvince);
+  }
 
   const registrationSchema = Yup.object().shape({
     pxnumber: Yup.string()
@@ -285,10 +287,11 @@ export function RegForm() {
                             as="select"
                             id="pxProvince"
                             name="pxProvince"
+                            onChange={useProvinces}
                             className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
                           >
-                            {!provinces ? provinces : provinces.map((p) => (
-                              <option key={p.prov_id} value={p.prov_id}>{p.prov_name}</option>
+                            {!provinces ? provinces : provinces.map((p, i) => (
+                              <option key={i} value={p.prov_id}>{p.prov_name}</option>
                             ))}
                           </Field>
                         </div>
@@ -299,11 +302,13 @@ export function RegForm() {
                             as="select"
                             id="pxDistrict"
                             name="pxDistrict"
-                            className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                            {!districts ? districts : districts.map((p) => (
-                              <option key={p.dist_id} value={p.dist_id}>{p.name}</option>
+                            className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                          >
+                            {!districts ? districts : districts.map((p, i) => (
+                              <option key={i} value={p.dist_id}>{p.name}</option>
                             ))}
                           </Field>
+                          {/*<ShowDistricts />*/}
                         </div>
 
                         <div className="col-span-6 sm:col-span-3 lg:col-span-2">
