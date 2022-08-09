@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import {Formik, Form, Field, ErrorMessage, useFormikContext} from 'formik';
+import {Formik, Form, Field, ErrorMessage} from 'formik';
 import * as Yup from 'yup';
 import { useTranslation } from 'react-i18next'
 import { ExclamationCircleIcon, UsersIcon } from '@heroicons/react/solid'
 import { CVLabel } from '@/components/micro/label'
-import { GetProvincesAPI } from '@/components/services/GetProvincesAPI'
-import { GetDistrictsAPI } from '@/components/services/GetDistrictsAPI'
 import { CustomListBox } from '@/components/micro/ListBox'
+import DisplayProvinces from '@/utils/displayProvinces'
+import DisplayDistricts from '@/utils/displayDistricts'
 
 const genders = [
   { id: "", name: 'Please choose a gender' },
@@ -15,20 +15,11 @@ const genders = [
   { id: 3, name: 'Male' },
   { id: 4, name: 'Prefer not to answer' },
 ]
-let [ districts ] = '';
 
 export function RegForm() {
   const { t, i18n } = useTranslation();
   
-  const [ provinces ] = GetProvincesAPI();
   const [ selected, setSelected ] = useState(genders[0]);
-  
-  function useProvinces(pr){
-    
-    let chosenProvince = pr;
-    [ districts ] = GetDistrictsAPI(chosenProvince);
-    console.log(chosenProvince);
-  }
 
   const registrationSchema = Yup.object().shape({
     pxnumber: Yup.string()
@@ -87,7 +78,7 @@ export function RegForm() {
           console.log('Registration form submitted...', payload);
         }}
       >
-        {({ errors, touched }) => (
+        {({ values,errors, touched }) => (
           <Form>
             <div className="mt-10 sm:mt-0">
               <div className="md:grid md:grid-cols-3 md:gap-6">
@@ -283,32 +274,12 @@ export function RegForm() {
                       <div className='grid grid-cols-6 gap-6'>
                         <div className="col-span-6 sm:col-span-6 lg:col-span-2">
                           <CVLabel field="forms.rego.fields.px.province" required='1' />
-                          <Field
-                            as="select"
-                            id="pxProvince"
-                            name="pxProvince"
-                            onChange={useProvinces}
-                            className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
-                          >
-                            {!provinces ? provinces : provinces.map((p, i) => (
-                              <option key={i} value={p.prov_id}>{p.prov_name}</option>
-                            ))}
-                          </Field>
+                          <DisplayProvinces onError={touched.pxProvince && errors.pxProvince} />
                         </div>
 
                         <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                           <CVLabel field="forms.rego.fields.px.district" required='1' />
-                          <Field
-                            as="select"
-                            id="pxDistrict"
-                            name="pxDistrict"
-                            className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
-                          >
-                            {!districts ? districts : districts.map((p, i) => (
-                              <option key={i} value={p.dist_id}>{p.name}</option>
-                            ))}
-                          </Field>
-                          {/*<ShowDistricts />*/}
+                          <DisplayDistricts />
                         </div>
 
                         <div className="col-span-6 sm:col-span-3 lg:col-span-2">
@@ -317,6 +288,7 @@ export function RegForm() {
                             type="text"
                             name="village"
                             id="village"
+                            disabled={!values.pxDistrict}
                             className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                           />
                         </div>

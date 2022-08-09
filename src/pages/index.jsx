@@ -20,7 +20,7 @@ export default function Home() {
       <main>
         <Container>
           <h1>
-          <span className="block text-base text-indigo-600 font-semibold tracking-wide uppercase">
+          <span className="block text-base font-semibold tracking-wide uppercase">
             {t('global.cv.label')} - <MissionYear /> {t('global.mission.label')}
           </span>
           <span className="mt-2 block text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
