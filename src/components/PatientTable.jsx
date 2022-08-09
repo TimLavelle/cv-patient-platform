@@ -1,4 +1,4 @@
-import { Container } from '@/components/Container'
+import { Container } from '@/components/layout/Container'
 
 const patient = [
   { number: '1854', familyName: 'Lavelle', givenName: 'Tim', age: '41' },

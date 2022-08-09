@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
-import { SiteHeader } from '@/components/Header'
-import { Footer } from '@/components/Footer'
+import { SiteHeader } from '@/components/layout/Header'
+import { Footer } from '@/components/layout/Footer'
 import { PatientTable } from '@/components/PatientTable'
-import { Container } from '@/components/Container'
+import { Container } from '@/components/layout/Container'
 import { MissionYear } from '@/components/micro/missionYear'
 
 export default function Home() {

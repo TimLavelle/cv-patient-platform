@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import { useTranslation } from 'react-i18next'
 import { ExclamationCircleIcon, UsersIcon } from '@heroicons/react/solid'
 import { CVLabel } from '@/components/micro/label'
-import { CustomListBox } from '@/components/micro/ListBox'
+import { CustomListBox } from '@/components/functional/ListBox'
 import DisplayProvinces from '@/utils/displayProvinces'
 import DisplayDistricts from '@/utils/displayDistricts'
 

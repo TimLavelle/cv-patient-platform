@@ -37,7 +37,7 @@ export function LanguageSelect() {
             <Menu.Item>
               {({ active }) => (
                 <a
-                  href="#"
+                  href="@/components/functional/LanguageSelector#"
                   onClick={() => changeLanguage('en')}
                   className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
@@ -51,7 +51,7 @@ export function LanguageSelect() {
             <Menu.Item>
               {({ active }) => (
                 <a
-                  href="#"
+                  href="@/components/functional/LanguageSelector#"
                   onClick={() => changeLanguage('kh')}
                   className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',

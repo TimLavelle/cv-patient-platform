@@ -3,10 +3,10 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import clsx from 'clsx'
 
-import { Logo } from '@/components/Logo'
+import { Logo } from '@/components/micro/Logo'
 import { Navigation } from '@/components/Navigation'
 import { MobileNavigation } from '@/components/MobileNavigation'
-import { SiteHeader } from '@/components/Header'
+import { SiteHeader } from '@/components/layout/Header'
 
 function Header({ navigation }) {
     let [isScrolled, setIsScrolled] = useState(false)

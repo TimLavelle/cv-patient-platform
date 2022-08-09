@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 
-import { Container } from '@/components/Container'
-import { Logo } from '@/components/Logo'
+import { Container } from '@/components/layout/Container'
+import { Logo } from '@/components/micro/Logo'
 import { NavLink } from '@/components/NavLink'
 
 export function Footer() {

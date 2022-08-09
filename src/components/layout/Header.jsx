@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { SearchIcon } from '@heroicons/react/solid'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
-import { Logo } from '@/components/Logo'
-import { LanguageSelect } from '@/components/micro/LanguageSelector'
+import { Logo } from '@/components/micro/Logo'
+import { LanguageSelect } from '@/components/functional/LanguageSelector'
 
 const user = {
   name: 'Tom Cook',
