@@ -62,12 +62,19 @@
         "px.district": "Districts",
         "px.village": "Village",
         "px.commune": "Commune",
-        "px.reason": "Why are you here today?",
-        "px.mobile": "Contact Phone Number/s (If any)",
+        "px.districtError": "Please select a District to continue",
+        "px.pxMobile": "Contact Phone Number/s (If any)",
         "px.mobileError": "Mobile must be numbers only",
+        "px.visitDetails": "Visit Details",
+        "px.visitDetailsDesc": "We need to capture these areas so we can ensure the patients visit the appropriate departments, but more importantly, don't sit inline all day if they don't have to.",
+        "px.whoToSee": "Which Departments are they here to see?",
+        "px.reason": "Why are you here today?",
+        "px.eyes": "Eyes Checked",
         "px.eyesChecked": "Does the patient want to have their eyes checked?",
-        "px.gpOnly": "Is the patient here only to see the GP Doctors?",
-        "px.hearing": "Does the patient want/need their hearing checked?"
+        "px.gp": "GP Only",
+        "px.gpOnly": "Is the patient here only to see the GP Doctors and does not wish to see any other departments?",
+        "px.ears": "Hearing Checked",
+        "px.earsChecked": "Does the patient want/need their hearing checked?"
       },
       "errors": {
         "px.number": "This patient number is already used"
