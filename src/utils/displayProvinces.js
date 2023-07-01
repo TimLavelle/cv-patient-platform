@@ -1,7 +1,7 @@
 import {React, useMemo} from 'react';
 import GetProvincesAPI from '@/utils/services/GetProvincesAPI';
 import {Field, useFormikContext } from 'formik';
-import {useTranslation} from 'react-i18next';
+import {useTranslation} from 'next-i18next';
 
 export default function DisplayProvinces(props){
   

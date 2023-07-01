@@ -1,5 +1,5 @@
-import { BadgeCheckIcon } from '@heroicons/react/solid'
-import { useTranslation } from 'react-i18next'
+import { BadgeCheckIcon } from '@heroicons/react/24/solid'
+import { useTranslation } from 'next-i18next'
 
 export function CVLabel(props) {
   const { t, i18n } = useTranslation();

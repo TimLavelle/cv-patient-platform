@@ -1,5 +1,5 @@
 import {Listbox, Transition} from '@headlessui/react';
-import {BadgeCheckIcon, CheckIcon, SelectorIcon} from '@heroicons/react/solid';
+import {BadgeCheckIcon, CheckIcon, SelectorIcon} from '@heroicons/react/24/solid';
 import {Fragment, React} from 'react';
 import {Field} from 'formik';
 

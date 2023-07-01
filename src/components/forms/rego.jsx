@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import {Formik, Form, Field, ErrorMessage} from 'formik';
 import * as Yup from 'yup';
-import { useTranslation } from 'react-i18next'
-import { ExclamationCircleIcon, UsersIcon } from '@heroicons/react/solid'
+import { useTranslation } from 'next-i18next'
+import { ExclamationCircleIcon, UsersIcon } from '@heroicons/react/24/solid'
 import { CVLabel } from '@/components/micro/label'
 import { CustomListBox } from '@/components/functional/ListBox'
 import DisplayProvinces from '@/utils/displayProvinces'
@@ -239,7 +239,7 @@ export function RegForm() {
                         </div>
 
                         <div className="col-span-6">
-                          <CVLabel field='forms.rego.fields.px.pxMobile' />
+                          <CVLabel field='forms.rego.fields.px.pxMobile' required='1' />
                           <div className="mt-1 flex rounded-md shadow-sm">
                             <div className="relative flex items-stretch flex-grow focus-within:z-10">
                               <Field
@@ -405,6 +405,7 @@ export function RegForm() {
                           </div>
                         </div>
                         <div className='col-span-6 sm:col-span-3'>
+                          <CVLabel field='forms.rego.fields.px.reason' />
                           <div className='mt-1'>
                             <textarea id="about" name="about" rows="3"
                                     className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"
