@@ -35,6 +35,8 @@ export async function connectToDatabase() {
 
     // Connect to cluster
     let client = new MongoClient(MONGODB_URI, opts);
+    if (!client) console.log('Could not connect to DB');
+    else console.log('Connection Established');
     await client.connect();
     let db = client.db(MONGODB_DB);
     Logger.filter("class", ["db"]);
