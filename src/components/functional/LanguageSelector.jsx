@@ -1,15 +1,15 @@
 import { Fragment } from 'react'
-import i18n from '../../i18n';
-import { useTranslation, withNamespaces } from 'react-i18next'
+// import i18n from '../../.i18n-BAK';
+import { useTranslation, withNamespaces } from 'next-i18next'
 import { Menu, Transition } from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/solid'
+import { ChevronDownIcon } from '@heroicons/react/24/solid'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
 export function LanguageSelect() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
@@ -37,7 +37,7 @@ export function LanguageSelect() {
             <Menu.Item>
               {({ active }) => (
                 <a
-                  href="#"
+                  href="@/components/functional/LanguageSelector#"
                   onClick={() => changeLanguage('en')}
                   className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
@@ -51,7 +51,7 @@ export function LanguageSelect() {
             <Menu.Item>
               {({ active }) => (
                 <a
-                  href="#"
+                  href="@/components/functional/LanguageSelector#"
                   onClick={() => changeLanguage('kh')}
                   className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',

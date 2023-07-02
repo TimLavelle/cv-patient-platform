@@ -1,14 +1,14 @@
 const { connectToDatabase } = require('@/lib/mongodb');
 var q2m = require('query-to-mongo')
 
-async function getProv(req, res) {
+async function getDist(req, res) {
   try {
 
     let { db } = await connectToDatabase();
-    const table = 'provinces';
+    const table = 'districts';
     let query = q2m(req.query);    
     
-    console.log(query.options);
+    // console.log(query.options);
 
     let prov = await db
       .collection(table)
@@ -33,7 +33,7 @@ async function getProv(req, res) {
 export default async function handler(req, res) {
   switch (req.method) {
     case 'GET': {
-      return getProv(req, res);
+      return getDist(req, res);
     }
 
     case 'POST': {

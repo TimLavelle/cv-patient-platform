@@ -1,19 +1,20 @@
 import React, { Component } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import { useTranslation } from 'react-i18next'
-import { SiteHeader } from '@/components/Header'
-import { Footer } from '@/components/Footer'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useTranslation } from 'next-i18next'
+import { SiteHeader } from '@/components/layout/Header'
+import { Footer } from '@/components/layout/Footer'
 import { PatientTable } from '@/components/PatientTable'
-import { Container } from '@/components/Container'
+import { Container } from '@/components/layout/Container'
 import { MissionYear } from '@/components/micro/missionYear'
 
 export default function Home() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const pageTitle = t('global.cv.label') +' - ' + t('global.px.label');
+
 	return (
 	  <>
-    <Suspense fallback={null}>
       <Head>
         <title>{pageTitle}</title>
       </Head>
@@ -21,12 +22,12 @@ export default function Home() {
       <main>
         <Container>
           <h1>
-          <span className="block text-base text-indigo-600 font-semibold tracking-wide uppercase">
-            {t('global.cv.label')} - <MissionYear /> {t('global.mission.label')}
-          </span>
-          <span className="mt-2 block text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-            {t('page.rego.page.title')}
-          </span>
+            <span className="block text-base font-semibold tracking-wide uppercase">
+              {t('global.cv.label')} - <MissionYear /> {t('global.mission.label')}
+            </span>
+            <span className="mt-2 block text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+              {t('page.rego.page.title')}
+            </span>
           </h1>
           <p className="mt-4 text-xl text-gray-500 leading-8">
             {t('page.rego.welcome.label')}
@@ -46,7 +47,16 @@ export default function Home() {
         </Container>
       </main>
       <Footer />
-    </Suspense>
 	  </>
 	)
+}
+
+export async function getStaticProps(context) {
+  const { locale } = context
+
+  return {
+    props: {
+      ...(await serverSideTranslations(locale)),
+    },
+  }
 }

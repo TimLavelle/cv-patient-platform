@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { SortAscendingIcon, UsersIcon } from '@heroicons/react/solid'
-import { ExclamationCircleIcon } from '@heroicons/react/solid'
-import { useTranslation } from 'react-i18next'
+import { SortAscendingIcon, UsersIcon } from '@heroicons/react/24/solid'
+import { ExclamationCircleIcon } from '@heroicons/react/24/solid'
+import { useTranslation } from 'next-i18next'
 
 export function PXNumber() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <div>

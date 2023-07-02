@@ -7,12 +7,10 @@ export function Logo() {
       <Image
         src={cvLogo}
         alt="Cambodia Vision"
-        layout="fixed"
         width={75}
         height={75}
         unoptimized
         priority
-              
       />
     )
   }

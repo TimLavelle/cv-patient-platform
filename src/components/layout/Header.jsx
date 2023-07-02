@@ -1,14 +1,14 @@
 import { Fragment } from 'react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'next-i18next'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { SearchIcon } from '@heroicons/react/solid'
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
-import { Logo } from '@/components/Logo'
-import { LanguageSelect } from '@/components/micro/LanguageSelector'
+import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
+import { BellIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Logo } from '@/components/micro/Logo'
+import { LanguageSelect } from '@/components/functional/LanguageSelector'
 
 const user = {
-  name: 'Tom Cook',
-  email: 'tom@example.com',
+  name: 'Tim Lavelle',
+  email: 'tim@lavelle.bio',
   imageUrl:
     'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
 }
@@ -18,7 +18,7 @@ function classNames(...classes) {
 }
 
 export function SiteHeader() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const navigation = [
     { name: t('nav.dashboard.label'), href: '/', current: true },
     { name: t('nav.stats.label'), href: '/stats', current: false },
@@ -47,7 +47,7 @@ export function SiteHeader() {
                   </label>
                   <div className="relative">
                     <div className="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
-                      <SearchIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                      <MagnifyingGlassIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
                     </div>
                     <input
                       id="search"
@@ -66,9 +66,9 @@ export function SiteHeader() {
                     {t('nav.open.label')}
                   </span>
                   {open ? (
-                    <XIcon className="block h-6 w-6" aria-hidden="true" />
+                    <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
                   ) : (
-                    <MenuIcon className="block h-6 w-6" aria-hidden="true" />
+                    <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
                   )}
                 </Disclosure.Button>
               </div>

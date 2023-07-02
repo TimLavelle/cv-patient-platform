@@ -1,4 +1,4 @@
-import { Container } from '@/components/Container'
+import { Container } from '@/components/layout/Container'
 import { MissionYear } from '@/components/micro/missionYear'
 import Link from 'next/link'
 

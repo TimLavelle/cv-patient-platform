@@ -1,4 +1,4 @@
-import { MongoClient } from 'mongodb';
+import { MongoClient, Logger } from 'mongodb';
 
 const MONGODB_URI = process.env.MONGODB_URI;
 const MONGODB_DB = process.env.DB_NAME;
@@ -25,6 +25,7 @@ export async function connectToDatabase() {
             db: cachedDb,
         };
     }
+    Logger.setLevel("debug");
 
     // set the connection options
     const opts = {
@@ -36,6 +37,7 @@ export async function connectToDatabase() {
     let client = new MongoClient(MONGODB_URI, opts);
     await client.connect();
     let db = client.db(MONGODB_DB);
+    Logger.filter("class", ["db"]);
 
     // set cache
     cachedClient = client;

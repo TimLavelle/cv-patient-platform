@@ -1,12 +1,12 @@
 import Link from 'next/link'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'next-i18next'
 
-import { Container } from '@/components/Container'
-import { Logo } from '@/components/Logo'
+import { Container } from '@/components/layout/Container'
+import { Logo } from '@/components/micro/Logo'
 import { NavLink } from '@/components/NavLink'
 
 export function Footer() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <footer className="bg-gray-800 mt-20">
       <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>

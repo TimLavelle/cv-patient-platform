@@ -1,13 +1,14 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { useTranslation } from 'react-i18next'
-import { SiteHeader } from '@/components/Header'
-import { Footer } from '@/components/Footer'
-import { Container } from '@/components/Container'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useTranslation } from 'next-i18next'
+import { SiteHeader } from '@/components/layout/Header'
+import { Footer } from '@/components/layout/Footer'
+import { Container } from '@/components/layout/Container'
 import { RegForm } from '@/components/forms/rego'
 
-export default function Home() {
-	const { t, i18n } = useTranslation();
+export default function Registration() {
+	const { t } = useTranslation();
 	const pageTitle = t('global.cv.label') + ' - ' + t('global.px.label');
 
 	return (
@@ -27,4 +28,14 @@ export default function Home() {
 			<Footer />
 		</>
 	)
+}
+
+export async function getStaticProps(context) {
+  const { locale } = context
+
+  return {
+    props: {
+      ...(await serverSideTranslations(locale)),
+    },
+  }
 }
