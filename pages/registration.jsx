@@ -2,10 +2,10 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next'
-import { SiteHeader } from '@/components/layout/Header'
-import { Footer } from '@/components/layout/Footer'
-import { Container } from '@/components/layout/Container'
-import { RegForm } from '@/components/forms/rego'
+import { SiteHeader } from '@/_components/layout/Header'
+import { Footer } from '@/_components/layout/Footer'
+import { Container } from '@/_components/layout/Container'
+import { RegForm } from '@/_components/forms/rego'
 
 export default function Registration() {
 	const { t } = useTranslation();
@@ -31,11 +31,11 @@ export default function Registration() {
 }
 
 export async function getStaticProps(context) {
-  const { locale } = context
+	const { locale } = context
 
-  return {
-    props: {
-      ...(await serverSideTranslations(locale)),
-    },
-  }
+	return {
+		props: {
+			...(await serverSideTranslations(locale)),
+		},
+	}
 }

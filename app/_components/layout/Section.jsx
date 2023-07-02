@@ -1,5 +1,5 @@
-import { Container } from '@/components/layout/Container'
-import { MissionYear } from '@/components/micro/missionYear'
+import { Container } from 'app/app/_components/layout/Container'
+import { MissionYear } from 'app/app/_components/micro/missionYear'
 import Link from 'next/link'
 
 export function Section() {
@@ -8,12 +8,12 @@ export function Section() {
       <div className="relative py-16 bg-white overflow-hidden">
         <div className="text-base mx-auto">
           <h1>
-          <span className="block text-base text-indigo-600 font-semibold tracking-wide uppercase">
-            Cambodia Vision - <MissionYear /> Mission
-          </span>
-          <span className="mt-2 block text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-            Registraion
-          </span>
+            <span className="block text-base text-indigo-600 font-semibold tracking-wide uppercase">
+              Cambodia Vision - <MissionYear /> Mission
+            </span>
+            <span className="mt-2 block text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+              Registraion
+            </span>
           </h1>
           <p className="mt-8 text-xl text-gray-500 leading-8">
             Welcome to the Cambodia Vision Patient Registration and Digital Form Library. Below you’ll find a link to the registration form that needs to filled in. Here you can upload a photo and capture all the necessary information for other subsequent forms.
@@ -39,4 +39,3 @@ export function Section() {
     </Container>
   )
 }
-  

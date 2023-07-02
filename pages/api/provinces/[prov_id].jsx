@@ -1,22 +1,27 @@
-const { connectToDatabase } = require('@/lib/mongodb');
+const { connectToDatabase } = require('@/_lib/mongodb');
 var q2m = require('query-to-mongo')
 
-async function getDistricts(req, res) {
+async function getProv(req, res) {
   try {
+
     let { db } = await connectToDatabase();
+    const table = 'provinces';
     let query = q2m(req.query);
-    const table = 'districts';
-    
-    
-    let dist = await db
+
+    console.log(query.options);
+
+    let prov = await db
       .collection(table)
       .find(
         query.criteria,
         query.options
       )
-      .sort({ name: 1 })
+      .sort({ published: -1 })
       .toArray();
-    return res.json(dist);
+    return res.json({
+      message: JSON.parse(JSON.stringify(prov)),
+      success: true,
+    });
   } catch (error) {
     return res.json({
       message: new Error(error).message,
@@ -28,19 +33,19 @@ async function getDistricts(req, res) {
 export default async function handler(req, res) {
   switch (req.method) {
     case 'GET': {
-      return getDistricts(req, res);
+      return getProv(req, res);
     }
 
     case 'POST': {
-      return addDistricts(req, res);
+      return addProv(req, res);
     }
 
     case 'PUT': {
-      return updateDistricts(req, res);
+      return updateProv(req, res);
     }
 
     case 'DELETE': {
-      return deleteDistricts(req, res);
+      return deleteProv(req, res);
     }
   }
 }
