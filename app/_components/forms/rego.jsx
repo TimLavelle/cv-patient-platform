@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import {Formik, Form, Field, ErrorMessage} from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useTranslation } from 'next-i18next'
 import { ExclamationCircleIcon, UsersIcon } from '@heroicons/react/24/solid'
-import { CVLabel } from '@/components/micro/label'
-import { CustomListBox } from '@/components/functional/ListBox'
-import DisplayProvinces from '@/utils/displayProvinces'
-import DisplayDistricts from '@/utils/displayDistricts'
+import { CVLabel } from '@/_components/micro/label'
+import { CustomListBox } from '@/_components/functional/ListBox'
+import DisplayProvinces from '@/_utils/displayProvinces'
+import DisplayDistricts from '@/_utils/displayDistricts'
 
 const genders = [
   { id: "", name: 'Please choose a gender' },
@@ -18,9 +18,9 @@ const genders = [
 
 export function RegForm() {
   const { t } = useTranslation();
-  
-  const [ selected, setSelected ] = useState(genders[0]);
-  const [province, setProvince] = useState({id: "" , name: ""});
+
+  const [selected, setSelected] = useState(genders[0]);
+  const [province, setProvince] = useState({ id: "", name: "" });
   const [districts, setDistricts] = useState({});
 
   const registrationSchema = Yup.object().shape({
@@ -43,14 +43,14 @@ export function RegForm() {
 
     pxMobile: Yup.number()
       .positive(t('forms.rego.fields.px.pxMobileError')),
-  
+
     pxProvince: Yup.number()
       .notOneOf(['0'], t('forms.rego.fields.px.provinceError'))
       .required(t('forms.rego.fields.px.provinceError')),
-  
+
     pxDistrict: Yup.number()
-    .notOneOf(['0'], t('forms.rego.fields.px.districtError'))
-    .required(t('forms.rego.fields.px.districtError'))
+      .notOneOf(['0'], t('forms.rego.fields.px.districtError'))
+      .required(t('forms.rego.fields.px.districtError'))
   })
 
   return (
@@ -88,7 +88,7 @@ export function RegForm() {
           console.log('Registration form submitted...', payload);
         }}
       >
-        {({ values,errors, touched }) => (
+        {({ values, errors, touched }) => (
           <Form>
             <div className="mt-10 sm:mt-0">
               <div className="md:grid md:grid-cols-3 md:gap-6">
@@ -262,13 +262,13 @@ export function RegForm() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="hidden sm:block" aria-hidden="true">
                 <div className="py-5">
                   <div className="border-t border-gray-200" />
                 </div>
               </div>
-              
+
               <div className="md:grid md:grid-cols-3 md:gap-6">
                 <div className="md:col-span-1">
                   <div className="px-4 sm:px-0">
@@ -286,12 +286,12 @@ export function RegForm() {
                       <div className='grid grid-cols-6 gap-6'>
                         <div className="col-span-6 sm:col-span-6 lg:col-span-2">
                           <CVLabel field="forms.rego.fields.px.province" required='1' />
-                          <DisplayProvinces callBack={(e) => setProvince({id: e.id})} onError={touched.pxProvince && errors.pxProvince} />
+                          <DisplayProvinces callBack={(e) => setProvince({ id: e.id })} onError={touched.pxProvince && errors.pxProvince} />
                         </div>
 
                         <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                           <CVLabel field="forms.rego.fields.px.district" required='1' />
-                          <DisplayDistricts idProvince={province.id} callBack={(e) => setDistricts({id: e.id})} onError={touched.pxDistrict && errors.pxDistrict} />
+                          <DisplayDistricts idProvince={province.id} callBack={(e) => setDistricts({ id: e.id })} onError={touched.pxDistrict && errors.pxDistrict} />
                         </div>
 
                         <div className="col-span-6 sm:col-span-3 lg:col-span-2">
@@ -327,13 +327,13 @@ export function RegForm() {
                   </div>
                 </div>
               </div>
-  
+
               <div className="hidden sm:block" aria-hidden="true">
                 <div className="py-5">
                   <div className="border-t border-gray-200" />
                 </div>
               </div>
-  
+
               <div className="md:grid md:grid-cols-3 md:gap-6">
                 <div className="md:col-span-1">
                   <div className="px-4 sm:px-0">
@@ -408,8 +408,8 @@ export function RegForm() {
                           <CVLabel field='forms.rego.fields.px.reason' />
                           <div className='mt-1'>
                             <textarea id="about" name="about" rows="3"
-                                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"
-                                    placeholder="Why is the patient here today"></textarea>
+                              className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"
+                              placeholder="Why is the patient here today"></textarea>
                           </div>
                         </div>
                       </div>
@@ -417,7 +417,7 @@ export function RegForm() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="md:grid md:grid-cols-3 md:gap-6">
                 <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
                   <button

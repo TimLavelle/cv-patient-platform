@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Dialog } from '@headlessui/react'
 
-import { Logo } from '@/components/micro/Logo'
+import { Logo } from 'app/app/_components/micro/Logo'
 import { Navigation } from '@/components/Navigation'
 
 export function MobileNavigation({ navigation }) {

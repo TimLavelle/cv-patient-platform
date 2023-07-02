@@ -1,30 +1,30 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* TODO: Fix the hook useProvinces inside the useMemo in order to have proper code */
-import {Field, useFormikContext} from 'formik';
-import GetDistrictsAPI from '@/utils/services/GetDistrictsAPI';
-import {useState} from 'react';
+import { Field, useFormikContext } from 'formik';
+import GetDistrictsAPI from '@/_utils/services/GetDistrictsAPI';
+import { useState } from 'react';
 
 export default function DisplayDistricts(props) {
-  
-  const {setFieldValue, values} = useFormikContext();
+
+  const { setFieldValue, values } = useFormikContext();
   let passedProvID = props.idProvince;
-  
+
   const selectedDistricts = [
-    {dist_id: '0', name: 'Select a Province first'},
+    { dist_id: '0', name: 'Select a Province first' },
   ]
   let districts = [{}];
-  
+
   // if(passedProvID > 0) handleDistricts();
-  
-  function handleDistricts(){
-    
+
+  function handleDistricts() {
+
     console.log('Province passed = ' + passedProvID)
     districts = GetDistrictsAPI(passedProvID).then(data => {
       // console.log(data)
       return data;
     });
   }
-  
+
   return (
     <Field
       as="select"

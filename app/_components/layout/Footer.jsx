@@ -1,9 +1,7 @@
-import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 
-import { Container } from '@/components/layout/Container'
-import { Logo } from '@/components/micro/Logo'
-import { NavLink } from '@/components/NavLink'
+import { Logo } from '@/_components/micro/Logo'
+import { NavLink } from '@/_components/navigations/NavLink'
 
 export function Footer() {
   const { t } = useTranslation();
@@ -22,7 +20,7 @@ export function Footer() {
         </div>
         <div className="flex flex-col items-center border-t border-slate-400/10 py-10 sm:flex-row-reverse sm:justify-between">
           <p className="mt-6 text-sm text-slate-500 sm:mt-0">
-          {t('global.copy.label')} &copy; {new Date().getFullYear()} {t('global.cv.label')}
+            {t('global.copy.label')} &copy; {new Date().getFullYear()} {t('global.cv.label')}
           </p>
         </div>
       </div>

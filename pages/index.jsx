@@ -3,18 +3,18 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next'
-import { SiteHeader } from '@/components/layout/Header'
-import { Footer } from '@/components/layout/Footer'
-import { PatientTable } from '@/components/PatientTable'
-import { Container } from '@/components/layout/Container'
-import { MissionYear } from '@/components/micro/missionYear'
+import { SiteHeader } from '@/_components/layout/Header'
+import { Footer } from '@/_components/layout/Footer'
+import { PatientTable } from '@/_components/forms/PatientTable'
+import { Container } from '@/_components/layout/Container'
+import { MissionYear } from '@/_components/micro/missionYear'
 
 export default function Home() {
   const { t } = useTranslation();
-  const pageTitle = t('global.cv.label') +' - ' + t('global.px.label');
+  const pageTitle = t('global.cv.label') + ' - ' + t('global.px.label');
 
-	return (
-	  <>
+  return (
+    <>
       <Head>
         <title>{pageTitle}</title>
       </Head>
@@ -34,7 +34,7 @@ export default function Home() {
           </p>
           <p className="mt-4 text-xl text-gray-500 leading-8">{t('page.rego.newPX.label')}&nbsp;
             <Link href="/registration" className="font-medium text-blue-600 hover:underline">
-               {t('page.rego.newPX.link')}
+              {t('page.rego.newPX.link')}
             </Link>
           </p>
           <h2>
@@ -47,8 +47,8 @@ export default function Home() {
         </Container>
       </main>
       <Footer />
-	  </>
-	)
+    </>
+  )
 }
 
 export async function getStaticProps(context) {

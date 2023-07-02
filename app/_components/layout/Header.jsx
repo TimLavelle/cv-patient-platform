@@ -1,10 +1,11 @@
 import { Fragment } from 'react'
 import { useTranslation } from 'next-i18next'
+import Image from 'next/image'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import { BellIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import { Logo } from '@/components/micro/Logo'
-import { LanguageSelect } from '@/components/functional/LanguageSelector'
+import { Logo } from '@/_components/micro/Logo'
+import { LanguageSelect } from '@/_components/functional/LanguageSelector'
 
 const user = {
   name: 'Tim Lavelle',
@@ -37,13 +38,13 @@ export function SiteHeader() {
             <div className="relative h-16 flex justify-between">
               <div className="relative z-10 px-2 flex lg:px-0">
                 <div className="flex-shrink-0 flex items-center">
-                    <Logo />
+                  <Logo />
                 </div>
               </div>
               <div className="relative z-0 flex-1 px-2 flex items-center justify-center sm:absolute sm:inset-0">
                 <div className="w-full sm:max-w-xs">
                   <label htmlFor="search" className="sr-only">
-                  {t('header.search.label')}
+                    {t('header.search.label')}
                   </label>
                   <div className="relative">
                     <div className="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
@@ -80,7 +81,7 @@ export function SiteHeader() {
                   <div>
                     <Menu.Button className="bg-gray-800 rounded-full flex text-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                       <span className="sr-only">
-                      {t('nav.user.label')}
+                        {t('nav.user.label')}
                       </span>
                       <img className="h-8 w-8 rounded-full" src={user.imageUrl} alt="" />
                     </Menu.Button>
