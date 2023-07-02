@@ -2,8 +2,10 @@ import { BadgeCheckIcon } from '@heroicons/react/24/solid'
 import { useTranslation } from 'next-i18next'
 
 export function CVLabel(props) {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   let requiredBadge;
+
+  console.log(props);
 
   if(props.required) requiredBadge = <BadgeCheckIcon className="h-5 w-5 text-blue-500 pl-1 inline" aria-hidden="true" />;
   return (

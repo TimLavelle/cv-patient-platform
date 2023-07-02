@@ -17,7 +17,7 @@ const genders = [
 ]
 
 export function RegForm() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   
   const [ selected, setSelected ] = useState(genders[0]);
   const [province, setProvince] = useState({id: "" , name: ""});

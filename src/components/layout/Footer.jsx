@@ -6,7 +6,7 @@ import { Logo } from '@/components/micro/Logo'
 import { NavLink } from '@/components/NavLink'
 
 export function Footer() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <footer className="bg-gray-800 mt-20">
       <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>

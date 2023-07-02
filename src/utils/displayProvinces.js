@@ -7,7 +7,7 @@ export default function DisplayProvinces(props){
   
   const [ provinces ] = GetProvincesAPI();
   const {setFieldValue, errors, touched} = useFormikContext();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   
   function handleSelectedProvince(pr){
     console.log('Fired')
