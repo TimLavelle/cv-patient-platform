@@ -2,13 +2,14 @@
 const { i18n } = require('./next-i18next.config')
 
 const nextConfig = {
-  reactStrictMode: false,
+  reactStrictMode: true,
   i18n: {
     locales: ['en', 'kh'],
     defaultLocale: 'en',
   },
   experimental: {
-    newNextLinkBehavior: true
+    newNextLinkBehavior: true,
+    appDir: true,
   },
   trailingSlash: false,
   images: {
