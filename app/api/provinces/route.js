@@ -10,6 +10,5 @@ export async function GET() {
     .sort({ prov_id: 1 })
     .toArray();
 
-  console.log(NextResponse.json({ prov }))
   return NextResponse.json({ prov })
 }
