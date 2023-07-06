@@ -1,7 +1,9 @@
-import { MongoClient, Logger } from 'mongodb';
+import { MongoClient } from 'mongodb';
 
 const MONGODB_URI = process.env.MONGODB_URI;
 const MONGODB_DB = process.env.DB_NAME;
+const client = new MongoClient(MONGODB_URI);
+let clientPromise
 
 // check the MongoDB URI
 if (!MONGODB_URI) {
@@ -16,7 +18,7 @@ if (!MONGODB_DB) {
 let cachedClient = null;
 let cachedDb = null;
 
-export async function connectToDatabase() {
+export default async function connectToDatabase() {
     // check the cached.
     if (cachedClient && cachedDb) {
         // load from cache
@@ -25,7 +27,6 @@ export async function connectToDatabase() {
             db: cachedDb,
         };
     }
-    Logger.setLevel("debug");
 
     // set the connection options
     const opts = {
@@ -35,11 +36,11 @@ export async function connectToDatabase() {
 
     // Connect to cluster
     let client = new MongoClient(MONGODB_URI, opts);
+    //TODO: Remove logging of connection outputs
     if (!client) console.log('Could not connect to DB');
     else console.log('Connection Established');
     await client.connect();
     let db = client.db(MONGODB_DB);
-    Logger.filter("class", ["db"]);
 
     // set cache
     cachedClient = client;
