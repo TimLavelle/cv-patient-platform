@@ -1,0 +1,286 @@
+{
+  "prov": [
+    {
+      "_id": "62d525f7ae6878105bb248b5",
+      "prov_id": 0,
+      "prov_name": "Please Select a Province"
+    },
+    {
+      "_id": "58b0002322575033db6d4a91",
+      "prov_id": 1,
+      "coordinates": [
+        "11.556374",
+        "104.928207"
+      ],
+      "seal": "Seal_of_Phnom_Penh.svg",
+      "description": "Once known as the \"Pearl of Asia\", it was considered one of the loveliest French-built cities in Indochina in the 1920s",
+      "nickname": "Pearl of Asia",
+      "updatedAt": "2021-05-10T21:39:08.924Z",
+      "prov_name": "Phnom Penh"
+    },
+    {
+      "_id": "58b0002322575033db6d4a92",
+      "prov_id": 2,
+      "coordinates": [
+        "3728323.42435243",
+        "43243434.344"
+      ],
+      "updated_at": "2017-02-24T09:42:59.258Z",
+      "created_at": "2017-02-24T09:42:59.258Z",
+      "prov_name": "Banteay Meanchey"
+    },
+    {
+      "_id": "58b0002322575033db6d4a93",
+      "prov_id": 3,
+      "coordinates": [
+        "3728323.42435243",
+        "43243434.344"
+      ],
+      "updated_at": "2017-02-24T09:42:59.258Z",
+      "created_at": "2017-02-24T09:42:59.258Z",
+      "prov_name": "Battambang"
+    },
+    {
+      "_id": "58b0002322575033db6d4a94",
+      "prov_id": 4,
+      "coordinates": [
+        "3728323.42435243",
+        "43243434.344"
+      ],
+      "updated_at": "2017-02-24T09:42:59.258Z",
+      "created_at": "2017-02-24T09:42:59.258Z",
+      "prov_name": "Kampong Cham"
+    },
+    {
+      "_id": "58b0002322575033db6d4a95",
+      "prov_id": 5,
+      "coordinates": [
+        "3728323.42435243",
+        "43243434.344"
+      ],
+      "updated_at": "2017-02-24T09:42:59.259Z",
+      "created_at": "2017-02-24T09:42:59.259Z",
+      "prov_name": "Kampong Chhnang"
+    },
+    {
+      "_id": "58b0002322575033db6d4a96",
+      "prov_id": 6,
+      "coordinates": [
+        "3728323.42435243",
+        "43243434.344"
+      ],
+      "updated_at": "2017-02-24T09:42:59.259Z",
+      "created_at": "2017-02-24T09:42:59.259Z",
+      "prov_name": "Kampong Speu"
+    },
+    {
+      "_id": "58b0002322575033db6d4a97",
+      "prov_id": 7,
+      "coordinates": [
+        "3728323.42435243",
+        "43243434.344"
+      ],
+      "updated_at": "2017-02-24T09:42:59.259Z",
+      "created_at": "2017-02-24T09:42:59.259Z",
+      "prov_name": "Kampong Thom"
+    },
+    {
+      "_id": "58b0002322575033db6d4a98",
+      "prov_id": 8,
+      "coordinates": [
+        "3728323.42435243",
+        "43243434.344"
+      ],
+      "updated_at": "2017-02-24T09:42:59.259Z",
+      "created_at": "2017-02-24T09:42:59.259Z",
+      "prov_name": "Kampot"
+    },
+    {
+      "_id": "58b0002322575033db6d4a99",
+      "prov_id": 9,
+      "coordinates": [
+        "3728323.42435243",
+        "43243434.344"
+      ],
+      "updated_at": "2017-02-24T09:42:59.259Z",
+      "created_at": "2017-02-24T09:42:59.259Z",
+      "prov_name": "Kandal"
+    },
+    {
+      "_id": "58b0002322575033db6d4a9a",
+      "prov_id": 10,
+      "coordinates": [
+        "3728323.42435243",
+        "43243434.344"
+      ],
+      "updated_at": "2017-02-24T09:42:59.259Z",
+      "created_at": "2017-02-24T09:42:59.259Z",
+      "prov_name": "Koh Kong"
+    },
+    {
+      "_id": "58b0002322575033db6d4a9b",
+      "prov_id": 11,
+      "coordinates": [
+        "3728323.42435243",
+        "43243434.344"
+      ],
+      "updated_at": "2017-02-24T09:42:59.260Z",
+      "created_at": "2017-02-24T09:42:59.260Z",
+      "prov_name": "Kep"
+    },
+    {
+      "_id": "58b0002322575033db6d4a9c",
+      "prov_id": 12,
+      "coordinates": [
+        "3728323.42435243",
+        "43243434.344"
+      ],
+      "updated_at": "2017-02-24T09:42:59.260Z",
+      "created_at": "2017-02-24T09:42:59.260Z",
+      "prov_name": "Kratié"
+    },
+    {
+      "_id": "58b0002322575033db6d4a9d",
+      "prov_id": 13,
+      "coordinates": [
+        "3728323.42435243",
+        "43243434.344"
+      ],
+      "updated_at": "2017-02-24T09:42:59.260Z",
+      "created_at": "2017-02-24T09:42:59.260Z",
+      "prov_name": "Mondulkiri"
+    },
+    {
+      "_id": "58b0002322575033db6d4a9e",
+      "prov_id": 14,
+      "coordinates": [
+        "3728323.42435243",
+        "43243434.344"
+      ],
+      "updated_at": "2017-02-24T09:42:59.260Z",
+      "created_at": "2017-02-24T09:42:59.260Z",
+      "prov_name": "Oddar Meanchey"
+    },
+    {
+      "_id": "58b0002322575033db6d4a9f",
+      "prov_id": 15,
+      "coordinates": [
+        "3728323.42435243",
+        "43243434.344"
+      ],
+      "updated_at": "2017-02-24T09:42:59.260Z",
+      "created_at": "2017-02-24T09:42:59.260Z",
+      "prov_name": "Pailin"
+    },
+    {
+      "_id": "58b0002322575033db6d4aa0",
+      "prov_id": 16,
+      "coordinates": [
+        "3728323.42435243",
+        "43243434.344"
+      ],
+      "updated_at": "2017-02-24T09:42:59.260Z",
+      "created_at": "2017-02-24T09:42:59.260Z",
+      "prov_name": "Sihanoukville"
+    },
+    {
+      "_id": "58b0002322575033db6d4aa1",
+      "prov_id": 17,
+      "coordinates": [
+        "3728323.42435243",
+        "43243434.344"
+      ],
+      "updated_at": "2017-02-24T09:42:59.261Z",
+      "created_at": "2017-02-24T09:42:59.261Z",
+      "prov_name": "Preah Vihear"
+    },
+    {
+      "_id": "58b0002322575033db6d4aa2",
+      "prov_id": 18,
+      "coordinates": [
+        "3728323.42435243",
+        "43243434.344"
+      ],
+      "updated_at": "2017-02-24T09:42:59.261Z",
+      "created_at": "2017-02-24T09:42:59.261Z",
+      "prov_name": "Pursat"
+    },
+    {
+      "_id": "58b0002322575033db6d4aa3",
+      "prov_id": 19,
+      "coordinates": [
+        "3728323.42435243",
+        "43243434.344"
+      ],
+      "updated_at": "2017-02-24T09:42:59.261Z",
+      "created_at": "2017-02-24T09:42:59.261Z",
+      "prov_name": "Prey Veng"
+    },
+    {
+      "_id": "58b0002322575033db6d4aa4",
+      "prov_id": 20,
+      "coordinates": [
+        "3728323.42435243",
+        "43243434.344"
+      ],
+      "updated_at": "2017-02-24T09:42:59.261Z",
+      "created_at": "2017-02-24T09:42:59.261Z",
+      "prov_name": "Ratanakiri"
+    },
+    {
+      "_id": "58b0002322575033db6d4aa5",
+      "prov_id": 21,
+      "coordinates": [
+        "3728323.42435243",
+        "43243434.344"
+      ],
+      "updated_at": "2017-02-24T09:42:59.261Z",
+      "created_at": "2017-02-24T09:42:59.261Z",
+      "prov_name": "Siem Reap"
+    },
+    {
+      "_id": "58b0002322575033db6d4aa6",
+      "prov_id": 22,
+      "coordinates": [
+        "3728323.42435243",
+        "43243434.344"
+      ],
+      "updated_at": "2017-02-24T09:42:59.261Z",
+      "created_at": "2017-02-24T09:42:59.261Z",
+      "prov_name": "Stung Treng"
+    },
+    {
+      "_id": "58b0002322575033db6d4aa7",
+      "prov_id": 23,
+      "coordinates": [
+        "3728323.42435243",
+        "43243434.344"
+      ],
+      "updated_at": "2017-02-24T09:42:59.261Z",
+      "created_at": "2017-02-24T09:42:59.261Z",
+      "prov_name": "Svay Rieng"
+    },
+    {
+      "_id": "58b0002322575033db6d4aa8",
+      "prov_id": 24,
+      "coordinates": [
+        "3728323.42435243",
+        "43243434.344"
+      ],
+      "updated_at": "2017-02-24T09:42:59.262Z",
+      "created_at": "2017-02-24T09:42:59.262Z",
+      "prov_name": "Takéo"
+    },
+    {
+      "_id": "58b0002322575033db6d4aa9",
+      "prov_id": 25,
+      "coordinates": [
+        "3728323.42435243",
+        "43243434.344"
+      ],
+      "updated_at": "2017-02-24T09:42:59.262Z",
+      "created_at": "2017-02-24T09:42:59.262Z",
+      "prov_name": "Tboung Khmum"
+    }
+  ]
+}
