@@ -1,3 +1,5 @@
+'use client'
+
 import { React, useMemo } from 'react';
 import GetProvincesAPI from '@/_utils/services/GetProvincesAPI';
 import { Field, useFormikContext } from 'formik';

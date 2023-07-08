@@ -1,3 +1,5 @@
+import 'server-only'
+
 import { NextResponse } from 'next/server'
 import dbConnect from '@/_lib/mongoose';
 import provinces from '@/_models/provModels'
