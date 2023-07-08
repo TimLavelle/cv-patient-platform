@@ -1,7 +1,5 @@
 'use client'
 
-/* eslint-disable react-hooks/rules-of-hooks */
-/* TODO: Fix the hook useProvinces inside the useMemo in order to have proper code */
 import { Field, useFormikContext } from 'formik';
 import GetDistrictsAPI from '@/_utils/services/GetDistrictsAPI';
 import { useState, useEffect, useCallback } from 'react';
