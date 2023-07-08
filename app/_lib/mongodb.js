@@ -3,7 +3,6 @@ import { MongoClient } from 'mongodb';
 const MONGODB_URI = process.env.MONGODB_URI;
 const MONGODB_DB = process.env.DB_NAME;
 const client = new MongoClient(MONGODB_URI);
-let clientPromise
 
 // check the MongoDB URI
 if (!MONGODB_URI) {
@@ -38,7 +37,7 @@ export default async function connectToDatabase() {
     let client = new MongoClient(MONGODB_URI, opts);
     //TODO: Remove logging of connection outputs
     if (!client) console.log('Could not connect to DB');
-    else console.log('Connection Established');
+    else console.log('DB Connection Established');
     await client.connect();
     let db = client.db(MONGODB_DB);
 

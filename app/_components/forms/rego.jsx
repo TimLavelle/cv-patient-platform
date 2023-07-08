@@ -107,7 +107,7 @@ export function RegForm() {
                     <div className="px-4 py-5 bg-white sm:p-6">
                       <div className="grid grid-cols-6 gap-6">
                         <div className="col-span-6 sm:col-span-3">
-                          <CVLabel field='forms.rego.fields.px.number' required='1' />
+                          <CVLabel labelFor="pxNumber" field='forms.rego.fields.px.number' required='1' />
                           <div className="mt-1 flex rounded-md shadow-sm">
                             <div className="relative flex items-stretch flex-grow focus-within:z-10">
                               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><UsersIcon className="h-5 w-5 text-gray-400" aria-hidden="true" /></div>
@@ -167,7 +167,7 @@ export function RegForm() {
                         </div>
 
                         <div className="col-span-6 sm:col-span-6 lg:col-span-2">
-                          <CVLabel field='forms.rego.fields.px.familyName' required='1' />
+                          <CVLabel labelFor="familyName" field='forms.rego.fields.px.familyName' required='1' />
                           <div className="mt-1 flex rounded-md shadow-sm">
                             <div className="relative flex items-stretch flex-grow focus-within:z-10">
                               <Field
@@ -191,7 +191,7 @@ export function RegForm() {
                         </div>
 
                         <div className="col-span-6 sm:col-span-6 lg:col-span-2">
-                          <CVLabel field='forms.rego.fields.px.givenName' required='1' />
+                          <CVLabel labelFor="givenName" field='forms.rego.fields.px.givenName' required='1' />
                           <div className="mt-1 flex rounded-md shadow-sm">
                             <div className="relative flex items-stretch flex-grow focus-within:z-10">
                               <Field
@@ -215,7 +215,7 @@ export function RegForm() {
                         </div>
 
                         <div className="col-span-6 sm:col-span-6 lg:col-span-2">
-                          <CVLabel field='forms.rego.fields.px.age' required='1' />
+                          <CVLabel labelFor="pxAge" field='forms.rego.fields.px.age' required='1' />
                           <div className="mt-1 flex rounded-md shadow-sm">
                             <div className="relative flex items-stretch flex-grow focus-within:z-10">
                               <Field
@@ -239,7 +239,7 @@ export function RegForm() {
                         </div>
 
                         <div className="col-span-6">
-                          <CVLabel field='forms.rego.fields.px.pxMobile' required='1' />
+                          <CVLabel labelFor="pxMobile" field='forms.rego.fields.px.pxMobile' required='1' />
                           <div className="mt-1 flex rounded-md shadow-sm">
                             <div className="relative flex items-stretch flex-grow focus-within:z-10">
                               <Field
@@ -285,17 +285,28 @@ export function RegForm() {
                     <div className='px-4 py-5 bg-white sm:p-6'>
                       <div className='grid grid-cols-6 gap-6'>
                         <div className="col-span-6 sm:col-span-6 lg:col-span-2">
-                          <CVLabel field="forms.rego.fields.px.province" required='1' />
-                          <DisplayProvinces callBack={(e) => setProvince({ id: e.id })} onError={touched.pxProvince && errors.pxProvince} />
+                          <CVLabel labelFor="pxProvince" field="forms.rego.fields.px.province" required='1' />
+                          <DisplayProvinces
+                            callBack={(e) => setProvince({ id: e.id })}
+                            onError={touched.pxProvince && errors.pxProvince}
+                          />
                         </div>
 
                         <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                          <CVLabel field="forms.rego.fields.px.district" required='1' />
-                          <DisplayDistricts idProvince={province.id} callBack={(e) => setDistricts({ id: e.id })} onError={touched.pxDistrict && errors.pxDistrict} />
+                          <CVLabel
+                            labelFor="pxDistrict"
+                            field="forms.rego.fields.px.district"
+                            required='1'
+                          />
+                          <DisplayDistricts
+                            idProvince={province.id}
+                            callBack={(e) => setDistricts({ id: e.id })}
+                            onError={touched.pxDistrict && errors.pxDistrict}
+                          />
                         </div>
 
                         <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                          <CVLabel field='forms.rego.fields.px.village' />
+                          <CVLabel labelFor="pxVillage" field='forms.rego.fields.px.village' />
                           <Field
                             type="text"
                             name="pxVillage"
@@ -305,7 +316,7 @@ export function RegForm() {
                           />
                         </div>
                         <div className="col-span-6">
-                          <CVLabel field='forms.rego.fields.px.commune' />
+                          <CVLabel labelFor="pxCommune" field='forms.rego.fields.px.commune' />
                           <div className="mt-1 flex rounded-md shadow-sm">
                             <div className="relative flex items-stretch flex-grow focus-within:z-10">
                               <Field
@@ -350,7 +361,7 @@ export function RegForm() {
                     <div className='px-4 py-5 bg-white sm:p-6'>
                       <div className='grid grid-cols-6 gap-6'>
                         <div className='col-span-6 sm:col-span-3'>
-                          <CVLabel field='forms.rego.fields.px.whoToSee' />
+                          <CVLabel labelFor="pxGPOnly" field='forms.rego.fields.px.whoToSee' />
                           <div className='mt-1'>
                             <div className="flex items-start">
                               <div className="flex items-center h-5">
@@ -405,9 +416,9 @@ export function RegForm() {
                           </div>
                         </div>
                         <div className='col-span-6 sm:col-span-3'>
-                          <CVLabel field='forms.rego.fields.px.reason' />
+                          <CVLabel labelFor="pxReason" field='forms.rego.fields.px.reason' />
                           <div className='mt-1'>
-                            <textarea id="about" name="about" rows="3"
+                            <textarea id="pxReason" name="pxReason" rows="3"
                               className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"
                               placeholder="Why is the patient here today"></textarea>
                           </div>

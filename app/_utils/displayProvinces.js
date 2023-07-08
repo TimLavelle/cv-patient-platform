@@ -10,9 +10,8 @@ export default function DisplayProvinces(props) {
   const { t } = useTranslation();
 
   function handleSelectedProvince(pr) {
-    console.log('Fired')
     console.log('Selected Province = ' + pr)
-    // Want to send 'pr' to displayDistricts.js in order to pull the appropriate Districts
+    //TODO: Want to send 'pr' to displayDistricts.js in order to pull the appropriate Districts
     props.callBack({ id: pr })
   }
 
@@ -28,7 +27,7 @@ export default function DisplayProvinces(props) {
         }}
         className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
       >
-        {!provinces ? provinces : provinces.map((p, i) => (
+        {!provinces ? provinces : provinces.data.map((p, i) => (
           <option key={i} value={p.prov_id}>{p.prov_name}</option>
         ))}
       </Field>

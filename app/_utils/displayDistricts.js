@@ -9,18 +9,16 @@ export default function DisplayDistricts(props) {
   const { setFieldValue, values } = useFormikContext();
   let passedProvID = props.idProvince;
 
-  const selectedDistricts = [
-    { dist_id: '0', name: 'Select a Province first' },
-  ]
+  let selectedDistricts = { "data": [{ dist_id: '0', name: 'Select a Province first' }] }
   let districts = [{}];
+  console.log(selectedDistricts.data);
 
-  // if(passedProvID > 0) handleDistricts();
+  if (passedProvID > 0) handleDistricts();
 
   function handleDistricts() {
-
     console.log('Province passed = ' + passedProvID)
-    districts = GetDistrictsAPI(passedProvID).then(data => {
-      // console.log(data)
+    selectedDistricts = GetDistrictsAPI(passedProvID).then(data => {
+      console.log('Province District Data is ', data)
       return data;
     });
   }
@@ -32,13 +30,13 @@ export default function DisplayDistricts(props) {
       name="pxDistrict"
       disabled={!values.pxProvince}
       onChange={(e) => {
-        // handleDistricts()
+        handleDistricts()
         setFieldValue('pxDistrict', e.target.value)
       }}
       className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
     >
-      {districts.map((p, i) => (
-        p.length > 0 ? <option key={i} value={p.dist_id}>{p.name}</option> : <option key={i} value={selectedDistricts[0].dist_id}>{selectedDistricts[0].name}</option>
+      {selectedDistricts.data.map((p, i) => (
+        <option key={i} value={p.dist_id}>{p.name}</option>
       ))}
     </Field>
   )
