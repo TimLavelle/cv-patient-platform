@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import axios from "axios";
 
-export default function useGetDistrictsAPI(provID) {
+export default function GetDistrictsAPI(provID) {
 
   let query;
   provID ? query = `?province_id=${provID}` : query = ''

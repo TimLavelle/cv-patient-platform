@@ -1,7 +1,7 @@
 'use client'
 
 import { Field, useFormikContext } from 'formik';
-import useGetDistrictsAPI from '@/_utils/services/GetDistrictsAPI';
+import GetDistrictsAPI from '@/_utils/services/GetDistrictsAPI';
 import { useState, useEffect, useCallback } from 'react';
 
 export default function DisplayDistricts(props) {
@@ -13,20 +13,20 @@ export default function DisplayDistricts(props) {
     data: [{ dist_id: '0', name: 'Select a Province first' }]
   });
 
-  const { data } = useGetDistrictsAPI(provID)
+  // const { data } = GetDistrictsAPI(passedProvID)
 
   const handleDistricts = useCallback(() => {
     console.log('Province passed = ' + passedProvID)
 
-    // GetDistrictsAPI(passedProvID).then(data => {
-    //   console.log('Province District Data is ', data)
-    //   setSelectedDistricts(data);
-    // });
+    GetDistrictsAPI(passedProvID).then(data => {
+      console.log('Province District Data is ', data)
+      setSelectedDistricts(data);
+    });
 
   }, [passedProvID]);
 
   useEffect(() => {
-    handleDistricts();
+    // handleDistricts();
   }, [passedProvID, handleDistricts]);
 
   return (
