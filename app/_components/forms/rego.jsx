@@ -1,5 +1,7 @@
-import { useState } from 'react'
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import React, { useState } from 'react'
+import useSWR from "swr";
+import axios from "axios";
+import { Formik, Form, Field, ErrorMessage, useFormikContext, useField } from 'formik';
 import * as Yup from 'yup';
 import { useTranslation } from 'next-i18next'
 import { ExclamationCircleIcon, UsersIcon } from '@heroicons/react/24/solid'
@@ -9,14 +11,14 @@ import DisplayProvinces from '@/_utils/displayProvinces'
 import DisplayDistricts from '@/_utils/displayDistricts'
 
 const genders = [
-  { id: "", name: 'Please choose a gender' },
+  { id: 0, name: 'Please choose a gender' },
   { id: 1, name: 'Child' },
   { id: 2, name: 'Female' },
   { id: 3, name: 'Male' },
   { id: 4, name: 'Prefer not to answer' },
 ]
 
-export function RegForm() {
+export function RegForm(props) {
   const { t } = useTranslation();
 
   const [selected, setSelected] = useState(genders[0]);
@@ -24,8 +26,9 @@ export function RegForm() {
   const [districts, setDistricts] = useState({});
 
   const registrationSchema = Yup.object().shape({
-    pxNumber: Yup.string()
-      .min(4, t('forms.rego.fields.px.numberLength'))
+    pxNumber: Yup.number()
+      .positive()
+      .integer()
       .max(4, t('forms.rego.fields.px.numberLength'))
       .required(t('forms.rego.fields.px.numberError')),
 
@@ -33,6 +36,11 @@ export function RegForm() {
       .required(t('forms.rego.fields.px.familyNameError')),
 
     pxGender: Yup.string()
+      .test({
+        value: "Please choose a gender",
+        test: (value, context) => value !== "Please choose a gender",
+        message: t('forms.rego.fields.px.genderError')
+      })
       .required(t('forms.rego.fields.px.genderError')),
 
     givenName: Yup.string()
@@ -41,14 +49,22 @@ export function RegForm() {
     pxAge: Yup.string()
       .required(t('forms.rego.fields.px.ageError')),
 
-    pxMobile: Yup.number()
-      .positive(t('forms.rego.fields.px.pxMobileError')),
+    pxMobile: Yup.string()
+      .required(t('forms.rego.fields.px.pxMobileError')),
 
     pxProvince: Yup.number()
+      .test({
+        value: 0,
+        test: (value, context) => value > 0
+      })
       .notOneOf(['0'], t('forms.rego.fields.px.provinceError'))
       .required(t('forms.rego.fields.px.provinceError')),
 
     pxDistrict: Yup.number()
+      .test({
+        value: 0,
+        test: (value, context) => value > 0
+      })
       .notOneOf(['0'], t('forms.rego.fields.px.districtError'))
       .required(t('forms.rego.fields.px.districtError'))
   })
@@ -63,13 +79,13 @@ export function RegForm() {
       <Formik
         initialValues={{
           pxNumber: '',
-          pxGender: '0',
+          pxGender: 'Please choose a gender',
           familyName: '',
           givenName: '',
           pxAge: '',
           pxMobile: '',
-          pxProvince: '',
-          pxDistrict: '',
+          pxProvince: '0',
+          pxDistrict: '0',
           pxVillage: '',
           pxCommune: '',
           pxGPOnly: false,
@@ -88,8 +104,8 @@ export function RegForm() {
           console.log('Registration form submitted...', payload);
         }}
       >
-        {({ values, errors, touched }) => (
-          <Form>
+        {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
+          <Form onSubmit={handleSubmit}>
             <div className="mt-10 sm:mt-0">
               <div className="md:grid md:grid-cols-3 md:gap-6">
                 <div className="md:col-span-1">
@@ -107,7 +123,7 @@ export function RegForm() {
                     <div className="px-4 py-5 bg-white sm:p-6">
                       <div className="grid grid-cols-6 gap-6">
                         <div className="col-span-6 sm:col-span-3">
-                          <CVLabel field='forms.rego.fields.px.number' required='1' />
+                          <CVLabel labelFor="pxNumber" field='forms.rego.fields.px.number' required='1' />
                           <div className="mt-1 flex rounded-md shadow-sm">
                             <div className="relative flex items-stretch flex-grow focus-within:z-10">
                               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><UsersIcon className="h-5 w-5 text-gray-400" aria-hidden="true" /></div>
@@ -115,6 +131,8 @@ export function RegForm() {
                                 type="number"
                                 name="pxNumber"
                                 id="pxNumber"
+                                onChange={handleChange}
+                                value={values.pxNumber}
                                 className="focus:ring-indigo-500 focus:border-indigo-500 block w-full rounded-none rounded-l-md pl-10 sm:text-sm border-gray-300"
                                 placeholder={t('forms.rego.fields.px.numberPlaceHolder')}
                               />
@@ -149,7 +167,7 @@ export function RegForm() {
                             optionValue="name"
                           />
 
-                          {errors.pxGender &&
+                          {errors.pxGender && touched.pxGender &&
                             <ErrorMessage
                               name="pxGender"
                               component="p"
@@ -167,7 +185,7 @@ export function RegForm() {
                         </div>
 
                         <div className="col-span-6 sm:col-span-6 lg:col-span-2">
-                          <CVLabel field='forms.rego.fields.px.familyName' required='1' />
+                          <CVLabel labelFor="familyName" field='forms.rego.fields.px.familyName' required='1' />
                           <div className="mt-1 flex rounded-md shadow-sm">
                             <div className="relative flex items-stretch flex-grow focus-within:z-10">
                               <Field
@@ -191,7 +209,7 @@ export function RegForm() {
                         </div>
 
                         <div className="col-span-6 sm:col-span-6 lg:col-span-2">
-                          <CVLabel field='forms.rego.fields.px.givenName' required='1' />
+                          <CVLabel labelFor="givenName" field='forms.rego.fields.px.givenName' required='1' />
                           <div className="mt-1 flex rounded-md shadow-sm">
                             <div className="relative flex items-stretch flex-grow focus-within:z-10">
                               <Field
@@ -215,7 +233,7 @@ export function RegForm() {
                         </div>
 
                         <div className="col-span-6 sm:col-span-6 lg:col-span-2">
-                          <CVLabel field='forms.rego.fields.px.age' required='1' />
+                          <CVLabel labelFor="pxAge" field='forms.rego.fields.px.age' required='1' />
                           <div className="mt-1 flex rounded-md shadow-sm">
                             <div className="relative flex items-stretch flex-grow focus-within:z-10">
                               <Field
@@ -239,7 +257,7 @@ export function RegForm() {
                         </div>
 
                         <div className="col-span-6">
-                          <CVLabel field='forms.rego.fields.px.pxMobile' required='1' />
+                          <CVLabel labelFor="pxMobile" field='forms.rego.fields.px.pxMobile' required='1' />
                           <div className="mt-1 flex rounded-md shadow-sm">
                             <div className="relative flex items-stretch flex-grow focus-within:z-10">
                               <Field
@@ -285,17 +303,33 @@ export function RegForm() {
                     <div className='px-4 py-5 bg-white sm:p-6'>
                       <div className='grid grid-cols-6 gap-6'>
                         <div className="col-span-6 sm:col-span-6 lg:col-span-2">
-                          <CVLabel field="forms.rego.fields.px.province" required='1' />
-                          <DisplayProvinces callBack={(e) => setProvince({ id: e.id })} onError={touched.pxProvince && errors.pxProvince} />
+                          <CVLabel labelFor="pxProvince" field="forms.rego.fields.px.province" required='1' />
+                          <DisplayProvinces
+                            callBack={(e) => setProvince({ id: e.id })}
+                            onError={touched.pxProvince && errors.pxProvince}
+                          />
+                          {props.onError &&
+                            <p className="mt-2 text-sm text-red-600" id="pxnum-error">
+                              {t('forms.rego.fields.px.provinceError')}
+                            </p>
+                          }
                         </div>
 
                         <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                          <CVLabel field="forms.rego.fields.px.district" required='1' />
-                          <DisplayDistricts idProvince={province.id} callBack={(e) => setDistricts({ id: e.id })} onError={touched.pxDistrict && errors.pxDistrict} />
+                          <CVLabel
+                            labelFor="pxDistrict"
+                            field="forms.rego.fields.px.district"
+                            required='1'
+                          />
+                          <DisplayDistricts
+                            idProvince={province.id}
+                            callBack={(e) => setDistricts({ id: e.id })}
+                            onError={touched.pxDistrict && errors.pxDistrict}
+                          />
                         </div>
 
                         <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                          <CVLabel field='forms.rego.fields.px.village' />
+                          <CVLabel labelFor="pxVillage" field='forms.rego.fields.px.village' />
                           <Field
                             type="text"
                             name="pxVillage"
@@ -305,7 +339,7 @@ export function RegForm() {
                           />
                         </div>
                         <div className="col-span-6">
-                          <CVLabel field='forms.rego.fields.px.commune' />
+                          <CVLabel labelFor="pxCommune" field='forms.rego.fields.px.commune' />
                           <div className="mt-1 flex rounded-md shadow-sm">
                             <div className="relative flex items-stretch flex-grow focus-within:z-10">
                               <Field
@@ -350,10 +384,11 @@ export function RegForm() {
                     <div className='px-4 py-5 bg-white sm:p-6'>
                       <div className='grid grid-cols-6 gap-6'>
                         <div className='col-span-6 sm:col-span-3'>
-                          <CVLabel field='forms.rego.fields.px.whoToSee' />
+                          <CVLabel labelFor="dept" field='forms.rego.fields.px.whoToSee' />
                           <div className='mt-1'>
                             <div className="flex items-start">
                               <div className="flex items-center h-5">
+                                {/* TODO: Set other checkboxes to disableed and RED border if GP Only is checked */}
                                 <input
                                   id="pxGPOnly"
                                   name="pxGPOnly"
@@ -362,9 +397,7 @@ export function RegForm() {
                                 />
                               </div>
                               <div className="ml-3 text-sm">
-                                <label htmlFor="candidates" className="font-medium text-gray-700">
-                                  {t('forms.rego.fields.px.gp')}
-                                </label>
+                                <CVLabel class="font-medium text-gray-700" labelFor="pxGPOnly" field='forms.rego.fields.px.gp' />
                                 <p className="text-gray-500">{t('forms.rego.fields.px.gpOnly')}</p>
                               </div>
                             </div>
@@ -374,14 +407,12 @@ export function RegForm() {
                                   id="pxEyes"
                                   name="pxEyes"
                                   type="checkbox"
-                                  disabled={values.pxGPOnly.true}
+                                  disabled={values.pxGPOnly}
                                   className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
                                 />
                               </div>
                               <div className="ml-3 text-sm">
-                                <label htmlFor="comments" className="font-medium text-gray-700">
-                                  {t('forms.rego.fields.px.eyes')}
-                                </label>
+                                <CVLabel class="font-medium text-gray-700" labelFor="pxEyes" field='forms.rego.fields.px.eyes' />
                                 <p className="text-gray-500">{t('forms.rego.fields.px.eyesChecked')}</p>
                               </div>
                             </div>
@@ -396,18 +427,16 @@ export function RegForm() {
                                 />
                               </div>
                               <div className="ml-3 text-sm">
-                                <label htmlFor="offers" className="font-medium text-gray-700">
-                                  {t('forms.rego.fields.px.ears')}
-                                </label>
+                                <CVLabel class="font-medium text-gray-700" labelFor="pxEars" field='forms.rego.fields.px.ears' />
                                 <p className="text-gray-500">{t('forms.rego.fields.px.earsChecked')}</p>
                               </div>
                             </div>
                           </div>
                         </div>
                         <div className='col-span-6 sm:col-span-3'>
-                          <CVLabel field='forms.rego.fields.px.reason' />
+                          <CVLabel labelFor="pxReason" field='forms.rego.fields.px.reason' />
                           <div className='mt-1'>
-                            <textarea id="about" name="about" rows="3"
+                            <textarea id="pxReason" name="pxReason" rows="3"
                               className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"
                               placeholder="Why is the patient here today"></textarea>
                           </div>

@@ -1,0 +1,33 @@
+{
+  "_id": "",
+  "patientRecord": [
+    {
+      "year": "2023",
+      "pxNumber": "0001",
+      "gender": "Male",
+      "familyName": "Lavelle",
+      "givenName": "Tim",
+      "age": "43",
+      "mobileNumber": "0447455101",
+      "prvinceID": 1,
+      "districtID": 1,
+      "village": "San Diego",
+      "commune": "Tierra Santa",
+      "departmentToSee": [
+        1,
+        2
+      ],
+      "reasonForVisit": "My left eye has been hurting for one year"
+    }
+  ],
+  "forms": [
+    {
+      "gp": {},
+      "hearing": {},
+      "dispensary": {},
+      "preOp": {},
+      "anesthesia": {},
+      "postOp": {}
+    }
+  ]
+}

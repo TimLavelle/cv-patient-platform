@@ -2,7 +2,7 @@
 const { i18n } = require('./next-i18next.config')
 
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   i18n: {
     locales: ['en', 'kh'],
     defaultLocale: 'en',
@@ -10,6 +10,7 @@ const nextConfig = {
   experimental: {
     newNextLinkBehavior: true,
     appDir: true,
+    serverComponentsExternalPackages: ["mongoose"]
   },
   trailingSlash: false,
   images: {
